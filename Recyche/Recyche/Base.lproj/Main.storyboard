@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Recyche" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Recyche" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -22,6 +22,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbR-pT-iD4">
                                 <rect key="frame" x="81" y="347" width="158" height="30"/>
                                 <state key="normal" title="Facebook Login Button"/>
+                                <connections>
+                                    <action selector="facebookLoginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a8e-ZV-CSc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -35,15 +38,19 @@
                             <constraint firstItem="7fr-cr-tq8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="40" id="y12-L8-0FZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="CnM-GH-VKc" kind="unwind" identifier="unwindLogin" unwindAction="unwindViewController:" id="Xdo-DE-KfV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="CnM-GH-VKc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1568" y="-382"/>
         </scene>
         <!--Scanner-->
         <scene sceneID="ui6-zt-kDR">
             <objects>
-                <viewController title="Scanner" id="giw-fh-jhR" sceneMemberID="viewController">
+                <viewController title="Scanner" id="giw-fh-jhR" customClass="ScannerViewController" customModule="Recyche" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8gt-Bw-buY"/>
                         <viewControllerLayoutGuide type="bottom" id="Bto-7B-VQ6"/>
@@ -75,7 +82,7 @@
         <!--Product Info-->
         <scene sceneID="Kc2-bR-XXS">
             <objects>
-                <viewController title="Product Info" id="1PX-ug-F7f" sceneMemberID="viewController">
+                <viewController title="Product Info" id="1PX-ug-F7f" customClass="ProductInfoViewController" customModule="Recyche" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p9b-Gl-jit"/>
                         <viewControllerLayoutGuide type="bottom" id="hrT-K8-8Kl"/>
@@ -101,7 +108,7 @@
         <!--Add Product-->
         <scene sceneID="EfU-gg-9oX">
             <objects>
-                <viewController title="Add Product" id="LNm-kN-zp5" sceneMemberID="viewController">
+                <viewController title="Add Product" id="LNm-kN-zp5" customClass="AddProductViewController" customModule="Recyche" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GpT-td-mb9"/>
                         <viewControllerLayoutGuide type="bottom" id="EcO-Xq-l2E"/>
@@ -127,7 +134,7 @@
         <!--Charts-->
         <scene sceneID="MXD-QN-feJ">
             <objects>
-                <viewController title="Charts" id="cET-ym-v4x" sceneMemberID="viewController">
+                <viewController title="Charts" id="cET-ym-v4x" customClass="ChartsViewController" customModule="Recyche" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pK7-aS-6Ch"/>
                         <viewControllerLayoutGuide type="bottom" id="jop-Nl-uLE"/>
@@ -153,7 +160,7 @@
         <!--List Of Products-->
         <scene sceneID="QvK-fR-74M">
             <objects>
-                <viewController title="List Of Products" id="Gkq-nT-skO" sceneMemberID="viewController">
+                <viewController title="List Of Products" id="Gkq-nT-skO" customClass="ListOfProductsViewController" customModule="Recyche" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Umh-K8-gTa"/>
                         <viewControllerLayoutGuide type="bottom" id="AXT-ll-lh1"/>
@@ -179,7 +186,7 @@
         <!--Profile-->
         <scene sceneID="9kC-pH-He3">
             <objects>
-                <viewController title="Profile" id="sne-o7-hW3" sceneMemberID="viewController">
+                <viewController title="Profile" id="sne-o7-hW3" customClass="ProfileViewController" customModule="Recyche" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5bz-vP-gmE"/>
                         <viewControllerLayoutGuide type="bottom" id="Jlv-yY-bzI"/>
