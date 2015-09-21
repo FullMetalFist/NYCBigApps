@@ -36,7 +36,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
         if error == nil
         {
             print("Login complete.")
-//            self.performSegueWithIdentifier("toScannerUnwindSegue", sender: self)
+            self.performSegueWithIdentifier("toScannerUnwindSegue", sender: self)
         }
         else
         {

@@ -77,6 +77,8 @@
 		</dict>
 	</dict>
 	<key>LSApplicationQueriesSchemes</key>
-	<string>fbauth2</string>
+	<array>
+		<string>fbauth2</string>
+	</array>
 </dict>
 </plist>
