@@ -16,22 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7fr-cr-tq8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="7fr-cr-tq8">
                                 <rect key="frame" x="40" y="100" width="240" height="124"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbR-pT-iD4">
-                                <rect key="frame" x="81" y="347" width="158" height="30"/>
-                                <state key="normal" title="Facebook Login Button"/>
-                                <connections>
-                                    <action selector="facebookLoginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a8e-ZV-CSc"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UbR-pT-iD4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="78" id="3gQ-ar-4jx"/>
                             <constraint firstItem="7fr-cr-tq8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="EY9-yb-K8B"/>
-                            <constraint firstItem="UbR-pT-iD4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hRy-Fo-VAb"/>
                             <constraint firstAttribute="trailing" secondItem="7fr-cr-tq8" secondAttribute="trailing" constant="40" id="kT5-7r-Xqt"/>
                             <constraint firstItem="7fr-cr-tq8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="l9w-Wf-vET"/>
                             <constraint firstItem="7fr-cr-tq8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-122" id="s7a-CP-fUt"/>
@@ -39,7 +30,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="CnM-GH-VKc" kind="unwind" identifier="unwindLogin" unwindAction="unwindViewController:" id="Xdo-DE-KfV"/>
+                        <segue destination="CnM-GH-VKc" kind="unwind" identifier="toScannerUnwindSegue" unwindAction="unwindViewController:" id="Xdo-DE-KfV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -70,7 +61,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Kg9-2g-01k"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="modal" id="FNM-gk-4f2"/>
+                        <segue destination="BYZ-38-t0r" kind="modal" identifier="toLoginSegue" id="FNM-gk-4f2"/>
                         <segue destination="1PX-ug-F7f" kind="modal" id="m8x-lW-tSk"/>
                         <segue destination="LNm-kN-zp5" kind="modal" id="XTR-ZO-iHe"/>
                     </connections>
@@ -194,10 +185,24 @@
                     <view key="view" contentMode="scaleToFill" id="YDr-7L-Mps">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1nb-TF-a5t">
+                                <rect key="frame" x="85" y="70" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="PfJ-qo-L9n"/>
+                                    <constraint firstAttribute="height" constant="150" id="Yop-DV-QjN"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1nb-TF-a5t" firstAttribute="top" secondItem="5bz-vP-gmE" secondAttribute="bottom" constant="50" id="UeD-lf-eJf"/>
+                            <constraint firstItem="1nb-TF-a5t" firstAttribute="centerX" secondItem="YDr-7L-Mps" secondAttribute="centerX" id="bdL-Gz-ouQ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Ki7-yf-xe2"/>
                     <connections>
+                        <outlet property="profilePhotoImageView" destination="1nb-TF-a5t" id="b5z-fw-Evg"/>
                         <segue destination="cET-ym-v4x" kind="modal" id="jPU-Xx-YDG"/>
                         <segue destination="Gkq-nT-skO" kind="modal" id="cQM-Kd-TNF"/>
                     </connections>
@@ -225,4 +230,7 @@
             <point key="canvasLocation" x="499" y="942"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Image" width="150" height="50"/>
+    </resources>
 </document>

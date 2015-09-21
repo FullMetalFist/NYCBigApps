@@ -7,13 +7,28 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class ScannerViewController: UIViewController {
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if (FBSDKAccessToken.currentAccessToken() == nil)
+        {
+            performSegueWithIdentifier("toLoginSegue", sender: self)
+            print("Not logged in..")
+        }
+        else
+        {
+            print("Logged in..")
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
