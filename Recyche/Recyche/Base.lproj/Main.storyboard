@@ -65,11 +65,31 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSk-cM-nbO">
+                                <rect key="frame" x="85" y="425" width="148" height="35"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="Start Scanning">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="scanClicked:" destination="giw-fh-jhR" eventType="touchUpInside" id="4Am-Di-LiF"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39K-WU-fGv">
+                                <rect key="frame" x="85" y="477" width="148" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Kg9-2g-01k"/>
                     <connections>
+                        <outlet property="messageLabel" destination="39K-WU-fGv" id="rJL-W9-WYl"/>
+                        <outlet property="scanButton" destination="hSk-cM-nbO" id="W9f-RS-Nkt"/>
+                        <outlet property="videoView" destination="FZG-JH-UZc" id="TDI-Qp-mf1"/>
                         <segue destination="BYZ-38-t0r" kind="modal" id="FNM-gk-4f2"/>
                         <segue destination="1PX-ug-F7f" kind="modal" id="m8x-lW-tSk"/>
                         <segue destination="LNm-kN-zp5" kind="modal" id="XTR-ZO-iHe"/>
