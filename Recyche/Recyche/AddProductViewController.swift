@@ -9,13 +9,8 @@
 import UIKit
 import Alamofire
 
-let URLString = "http://www.searchupc.com/handlers/upcsearch.ashx?request_type=3"
-let access_token = "C6D5DA80-A126-4235-A35A-26E73FC64C2F"
-let UPC_code =  "037000088806"
 
-
-
-class ViewController: UIViewController {
+class AddProductViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

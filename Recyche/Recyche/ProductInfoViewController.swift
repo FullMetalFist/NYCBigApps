@@ -15,7 +15,7 @@ let UPC_code =  "037000088806"
 
 
 
-class ViewController: UIViewController {
+class ProductInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
