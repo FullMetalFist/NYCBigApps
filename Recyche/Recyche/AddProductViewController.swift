@@ -18,10 +18,10 @@ class AddProductViewController: UIViewController {
         
         Alamofire.request(.GET, URLString, parameters: ["access_token" : access_token ,"upc": UPC_code])
             .responseJSON { response in
-                print(response.request)  // original URL request
-                print(response.response) // URL response
-                print(response.data)     // server data
-                print(response.result)   // result of response serialization
+//                print(response.request)  // original URL request
+//                print(response.response) // URL response
+//                print(response.data)     // server data
+//                print(response.result)   // result of response serialization
                 
                 if let JSON = response.result.value {
                     print("JSON: \(JSON)")

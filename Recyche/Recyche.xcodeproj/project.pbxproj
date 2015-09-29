@@ -21,6 +21,7 @@
 		FA1BAED11BAF162200D24788 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED01BAF162200D24788 /* ProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA1BAED31BAF163400D24788 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED21BAF163400D24788 /* ChartsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA1BAED51BAF164B00D24788 /* ListOfProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED41BAF164B00D24788 /* ListOfProductsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		FAE80A2D1BBA5E45008B1244 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE80A2C1BBA5E45008B1244 /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		FA1BAED01BAF162200D24788 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FA1BAED21BAF163400D24788 /* ChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		FA1BAED41BAF164B00D24788 /* ListOfProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfProductsViewController.swift; sourceTree = "<group>"; };
+		FAE80A2C1BBA5E45008B1244 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				FA1BAEC91BAF15B200D24788 /* View Controllers */,
 				7CCEA0101BADB48A00F6D423 /* AppDelegate.swift */,
 				7CCEA0141BADB48A00F6D423 /* Main.storyboard */,
+				FAE80A2C1BBA5E45008B1244 /* SwiftyJSON.swift */,
 				7CCEA01A1BADB48A00F6D423 /* Assets.xcassets */,
 				7CCEA01C1BADB48A00F6D423 /* LaunchScreen.storyboard */,
 				7CCEA01F1BADB48A00F6D423 /* Info.plist */,
@@ -202,7 +205,7 @@
 				TargetAttributes = {
 					7CCEA00C1BADB48A00F6D423 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 36C7Q24PMU;
+						DevelopmentTeam = 96HG6E2WJ6;
 					};
 				};
 			};
@@ -289,6 +292,7 @@
 				FA1BAEC81BAF15A800D24788 /* LoginViewController.swift in Sources */,
 				FA1BAED31BAF163400D24788 /* ChartsViewController.swift in Sources */,
 				7CCEA0111BADB48A00F6D423 /* AppDelegate.swift in Sources */,
+				FAE80A2D1BBA5E45008B1244 /* SwiftyJSON.swift in Sources */,
 				FA1BAECF1BAF160600D24788 /* AddProductViewController.swift in Sources */,
 				FA1BAED51BAF164B00D24788 /* ListOfProductsViewController.swift in Sources */,
 				7CCEA0191BADB48A00F6D423 /* Recyche.xcdatamodeld in Sources */,

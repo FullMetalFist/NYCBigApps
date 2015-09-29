@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cW3-N2-WJt">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -91,7 +93,7 @@
                         <outlet property="scanButton" destination="hSk-cM-nbO" id="W9f-RS-Nkt"/>
                         <outlet property="videoView" destination="FZG-JH-UZc" id="TDI-Qp-mf1"/>
                         <segue destination="BYZ-38-t0r" kind="modal" id="FNM-gk-4f2"/>
-                        <segue destination="1PX-ug-F7f" kind="modal" id="m8x-lW-tSk"/>
+                        <segue destination="1PX-ug-F7f" kind="modal" identifier="toProductInfoSegue" id="m8x-lW-tSk"/>
                         <segue destination="LNm-kN-zp5" kind="modal" id="XTR-ZO-iHe"/>
                     </connections>
                 </viewController>
@@ -111,15 +113,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmB-yO-adh">
-                                <rect key="frame" x="113" y="273" width="94" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kxo-Gm-GIH">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="285"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="kxo-Gm-GIH" secondAttribute="height" multiplier="64:57" id="qp2-jX-6N8"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmB-yO-adh">
+                                <rect key="frame" x="20" y="293" width="280" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DmB-yO-adh" firstAttribute="leading" secondItem="qdN-4o-ZlJ" secondAttribute="leading" constant="20" id="1Mw-w9-43U"/>
+                            <constraint firstAttribute="trailing" secondItem="kxo-Gm-GIH" secondAttribute="trailing" id="KAf-D1-A81"/>
+                            <constraint firstItem="kxo-Gm-GIH" firstAttribute="leading" secondItem="qdN-4o-ZlJ" secondAttribute="leading" id="TTF-Zc-RSv"/>
+                            <constraint firstItem="DmB-yO-adh" firstAttribute="top" secondItem="kxo-Gm-GIH" secondAttribute="bottom" constant="8" id="UNd-W7-TcU"/>
+                            <constraint firstItem="kxo-Gm-GIH" firstAttribute="top" secondItem="qdN-4o-ZlJ" secondAttribute="top" id="t65-i6-T2Z"/>
+                            <constraint firstAttribute="trailing" secondItem="DmB-yO-adh" secondAttribute="trailing" constant="20" id="zH8-s6-r7R"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="productImageView" destination="kxo-Gm-GIH" id="XiX-dX-myj"/>
+                        <outlet property="productNameLabel" destination="DmB-yO-adh" id="QMW-Gh-ec0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DFT-aG-ReP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -17,20 +17,38 @@ let UPC_code =  "037000088806"
 
 class ProductInfoViewController: UIViewController {
     
+    var scannedUPC: String!
+    
+    @IBOutlet weak var productImageView: UIImageView!
+    @IBOutlet weak var productNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        Alamofire.request(.GET, URLString, parameters: ["access_token" : access_token ,"upc": UPC_code])
+        print(scannedUPC)
+        Alamofire.request(.GET, URLString, parameters: ["access_token" : access_token ,"upc": scannedUPC])
             .responseJSON { response in
-                print(response.request)  // original URL request
-                print(response.response) // URL response
-                print(response.data)     // server data
-                print(response.result)   // result of response serialization
+//                print(response.request)  // original URL request
+//                print(response.response) // URL response
+//                print(response.data)     // server data
+//                print(response.result)   // result of response serialization
                 
-                if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
+                if let data = response.data {
+                    let json = JSON(data: data)
+                    print(json["0"]["productname"])
+                    
+                    self.productNameLabel.text = json["0"]["productname"].stringValue
+                    self.productImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: json["0"]["imageurl"].stringValue)!)!)
                 }
+                
+                
+//                if let JSON = response.result.value {
+//                    print("JSON: \(JSON)")
+//                    
+//                    print(JSON[0]["0 ="])
+////                    self.productImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: JSON["imageurl"] as! String)!)!)
+//                    self.productNameLabel.text = JSON["productname"] as? String
+//                }
         }
         
     }

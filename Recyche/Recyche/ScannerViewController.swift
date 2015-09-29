@@ -164,8 +164,11 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
             qrCodeFrameView?.frame = barCodeObject.bounds;
             
             if metadataObj.stringValue != nil {
-                messageLabel.text = metadataObj.stringValue
+                captureSession?.stopRunning()
                 lastCapturedCode = metadataObj.stringValue
+                performSegueWithIdentifier("toProductInfoSegue", sender: self)
+//                messageLabel.text = metadataObj.stringValue
+//                lastCapturedCode = metadataObj.stringValue
             }
         }
     }
@@ -179,14 +182,18 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
     
     @IBAction func unwindViewController(segue: UIStoryboardSegue) { }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toProductInfoSegue" {
+            let productInfoViewController = segue.destinationViewController as! ProductInfoViewController
+            productInfoViewController.scannedUPC = lastCapturedCode
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
