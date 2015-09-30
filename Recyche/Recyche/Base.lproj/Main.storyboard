@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -67,23 +66,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSk-cM-nbO">
-                                <rect key="frame" x="85" y="425" width="148" height="35"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="Start Scanning">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="scanClicked:" destination="giw-fh-jhR" eventType="touchUpInside" id="4Am-Di-LiF"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39K-WU-fGv">
-                                <rect key="frame" x="85" y="477" width="148" height="25"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fN-1M-izg">
                                 <rect key="frame" x="202" y="72" width="98" height="30"/>
                                 <state key="normal" title="Product Detail"/>
@@ -91,6 +73,20 @@
                                     <action selector="toProductDetail:" destination="giw-fh-jhR" eventType="touchUpInside" id="q8Y-V3-gX0"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap the screen to focus." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8K-Iv-lN7">
+                                <rect key="frame" x="68" y="422" width="185" height="23"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" Hover over code with camera           Avoid glare and shadows" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDr-lo-b28">
+                                <rect key="frame" x="53" y="121" width="214" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -100,8 +96,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="M1B-uq-doa"/>
                     <connections>
-                        <outlet property="messageLabel" destination="39K-WU-fGv" id="rJL-W9-WYl"/>
-                        <outlet property="scanButton" destination="hSk-cM-nbO" id="W9f-RS-Nkt"/>
                         <outlet property="videoView" destination="FZG-JH-UZc" id="TDI-Qp-mf1"/>
                         <segue destination="BYZ-38-t0r" kind="modal" identifier="toLoginSegue" id="FNM-gk-4f2"/>
                         <segue destination="1PX-ug-F7f" kind="push" identifier="toProductInfoSegue" id="m8x-lW-tSk"/>
@@ -124,28 +118,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kxo-Gm-GIH">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="285"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="kxo-Gm-GIH" secondAttribute="height" multiplier="64:57" id="qp2-jX-6N8"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kxo-Gm-GIH">
+                                <rect key="frame" x="0.0" y="64" width="160" height="160"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmB-yO-adh">
-                                <rect key="frame" x="20" y="293" width="280" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmB-yO-adh">
+                                <rect key="frame" x="168" y="64" width="152" height="160"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="DmB-yO-adh" firstAttribute="leading" secondItem="qdN-4o-ZlJ" secondAttribute="leading" constant="20" id="1Mw-w9-43U"/>
-                            <constraint firstAttribute="trailing" secondItem="kxo-Gm-GIH" secondAttribute="trailing" id="KAf-D1-A81"/>
-                            <constraint firstItem="kxo-Gm-GIH" firstAttribute="leading" secondItem="qdN-4o-ZlJ" secondAttribute="leading" id="TTF-Zc-RSv"/>
-                            <constraint firstItem="DmB-yO-adh" firstAttribute="top" secondItem="kxo-Gm-GIH" secondAttribute="bottom" constant="8" id="UNd-W7-TcU"/>
-                            <constraint firstItem="kxo-Gm-GIH" firstAttribute="top" secondItem="qdN-4o-ZlJ" secondAttribute="top" id="t65-i6-T2Z"/>
-                            <constraint firstAttribute="trailing" secondItem="DmB-yO-adh" secondAttribute="trailing" constant="20" id="zH8-s6-r7R"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jrW-V2-JNU"/>
                     <connections>
@@ -179,7 +162,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dGU-GZ-DAV">
                                 <rect key="frame" x="0.0" y="64" width="160" height="160"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjQ-ep-30t">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjQ-ep-30t">
                                 <rect key="frame" x="168" y="64" width="152" height="160"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
