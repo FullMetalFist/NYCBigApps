@@ -8,6 +8,8 @@
 
 import UIKit
 import AVFoundation
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDelegate
 
@@ -16,7 +18,6 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
     @IBOutlet var scanButton: UIButton!
     @IBOutlet  weak var messageLabel: UILabel!
     @IBOutlet weak var videoView:UIView!
-    
     
     var captureSession:AVCaptureSession?
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
@@ -41,7 +42,20 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
         AVMetadataObjectTypeAztecCode]
     
     
-    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if (FBSDKAccessToken.currentAccessToken() == nil)
+        {
+            performSegueWithIdentifier("toLoginSegue", sender: self)
+            print("Not logged in..")
+        }
+        else
+        {
+            print("Logged in..")
+        }
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -14,13 +14,16 @@
 		7CCEA0191BADB48A00F6D423 /* Recyche.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CCEA0171BADB48A00F6D423 /* Recyche.xcdatamodeld */; };
 		7CCEA01B1BADB48A00F6D423 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CCEA01A1BADB48A00F6D423 /* Assets.xcassets */; };
 		7CCEA01E1BADB48A00F6D423 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CCEA01C1BADB48A00F6D423 /* LaunchScreen.storyboard */; };
-		FA1BAEC81BAF15A800D24788 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAEC71BAF15A800D24788 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA1BAECB1BAF15C600D24788 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAECA1BAF15C600D24788 /* ScannerViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA1BAECD1BAF15FB00D24788 /* ProductInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAECC1BAF15FB00D24788 /* ProductInfoViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA1BAECF1BAF160600D24788 /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAECE1BAF160600D24788 /* AddProductViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA1BAED11BAF162200D24788 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED01BAF162200D24788 /* ProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA1BAED31BAF163400D24788 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED21BAF163400D24788 /* ChartsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA1BAED51BAF164B00D24788 /* ListOfProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED41BAF164B00D24788 /* ListOfProductsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		FAE29D7D1BBB63EF003325DA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE29D7A1BBB63EF003325DA /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
+		FAE29D7E1BBB63EF003325DA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE29D7B1BBB63EF003325DA /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
+		FAE29D7F1BBB63EF003325DA /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE29D7C1BBB63EF003325DA /* FBSDKShareKit.framework */; settings = {ASSET_TAGS = (); }; };
+		FAE29D851BBB6412003325DA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE29D841BBB6412003325DA /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		FAE80A2D1BBA5E45008B1244 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE80A2C1BBA5E45008B1244 /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -92,13 +95,16 @@
 		7CCEA01A1BADB48A00F6D423 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CCEA01D1BADB48A00F6D423 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CCEA01F1BADB48A00F6D423 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA1BAEC71BAF15A800D24788 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA1BAECA1BAF15C600D24788 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		FA1BAECC1BAF15FB00D24788 /* ProductInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductInfoViewController.swift; sourceTree = "<group>"; };
 		FA1BAECE1BAF160600D24788 /* AddProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProductViewController.swift; sourceTree = "<group>"; };
 		FA1BAED01BAF162200D24788 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FA1BAED21BAF163400D24788 /* ChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		FA1BAED41BAF164B00D24788 /* ListOfProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfProductsViewController.swift; sourceTree = "<group>"; };
+		FAE29D7A1BBB63EF003325DA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		FAE29D7B1BBB63EF003325DA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		FAE29D7C1BBB63EF003325DA /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		FAE29D841BBB6412003325DA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FAE80A2C1BBA5E45008B1244 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,7 +113,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAE29D7F1BBB63EF003325DA /* FBSDKShareKit.framework in Frameworks */,
 				4E9F7A101BB9E0B60012EF51 /* Alamofire.framework in Frameworks */,
+				FAE29D7D1BBB63EF003325DA /* FBSDKCoreKit.framework in Frameworks */,
+				FAE29D7E1BBB63EF003325DA /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +163,9 @@
 				7CCEA01C1BADB48A00F6D423 /* LaunchScreen.storyboard */,
 				7CCEA01F1BADB48A00F6D423 /* Info.plist */,
 				7CCEA0171BADB48A00F6D423 /* Recyche.xcdatamodeld */,
+				FAE29D7A1BBB63EF003325DA /* FBSDKCoreKit.framework */,
+				FAE29D7B1BBB63EF003325DA /* FBSDKLoginKit.framework */,
+				FAE29D7C1BBB63EF003325DA /* FBSDKShareKit.framework */,
 			);
 			path = Recyche;
 			sourceTree = "<group>";
@@ -161,7 +173,7 @@
 		FA1BAEC91BAF15B200D24788 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA1BAEC71BAF15A800D24788 /* LoginViewController.swift */,
+				FAE29D841BBB6412003325DA /* LoginViewController.swift */,
 				FA1BAECA1BAF15C600D24788 /* ScannerViewController.swift */,
 				FA1BAECC1BAF15FB00D24788 /* ProductInfoViewController.swift */,
 				FA1BAECE1BAF160600D24788 /* AddProductViewController.swift */,
@@ -289,7 +301,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA1BAEC81BAF15A800D24788 /* LoginViewController.swift in Sources */,
 				FA1BAED31BAF163400D24788 /* ChartsViewController.swift in Sources */,
 				7CCEA0111BADB48A00F6D423 /* AppDelegate.swift in Sources */,
 				FAE80A2D1BBA5E45008B1244 /* SwiftyJSON.swift in Sources */,
@@ -298,6 +309,7 @@
 				7CCEA0191BADB48A00F6D423 /* Recyche.xcdatamodeld in Sources */,
 				FA1BAED11BAF162200D24788 /* ProfileViewController.swift in Sources */,
 				FA1BAECD1BAF15FB00D24788 /* ProductInfoViewController.swift in Sources */,
+				FAE29D851BBB6412003325DA /* LoginViewController.swift in Sources */,
 				FA1BAECB1BAF15C600D24788 /* ScannerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,6 +432,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Recyche",
+				);
 				INFOPLIST_FILE = Recyche/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -436,6 +452,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Recyche",
+				);
 				INFOPLIST_FILE = Recyche/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
