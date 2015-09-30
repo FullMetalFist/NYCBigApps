@@ -152,6 +152,11 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
         }
     }
     
+    @IBAction func toProductDetail(sender: AnyObject) {
+        lastCapturedCode = "0892685001003"
+        performSegueWithIdentifier("toProductInfoSegue", sender: self)
+    }
+    
     override func viewDidLayoutSubviews() {
         
     }
