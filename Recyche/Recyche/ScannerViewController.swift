@@ -48,11 +48,10 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
         if (FBSDKAccessToken.currentAccessToken() == nil)
         {
             performSegueWithIdentifier("toLoginSegue", sender: self)
-            print("Not logged in..")
         }
         else
         {
-            print("Logged in..")
+            // Need some error notification
         }
 
     }
@@ -199,9 +198,6 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
             let productInfoViewController = segue.destinationViewController as! ProductInfoViewController
             productInfoViewController.scannedUPC = lastCapturedCode
         }
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    
 
 }

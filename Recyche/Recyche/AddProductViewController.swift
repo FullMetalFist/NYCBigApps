@@ -24,17 +24,10 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        Alamofire.request(.GET, URLString, parameters: ["access_token" : access_token ,"upc": UPC_code])
-            .responseJSON { response in
-//                print(response.request)  // original URL request
-//                print(response.response) // URL response
-//                print(response.data)     // server data
-//                print(response.result)   // result of response serialization
-                
-                if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
-                }
-        }
+//        Alamofire.request(.GET, URLString, parameters: ["access_token" : access_token ,"upc": UPC_code])
+//            .responseJSON { response in
+//                
+//        }
         
     }
     @IBAction func addProductToDatabase(sender: AnyObject) {

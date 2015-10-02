@@ -32,14 +32,14 @@ class ProductInfoViewController: UIViewController {
                 
                 if let data = response.data {
                     let json = JSON(data: data)
-//                    print(json)
+                    
                     if let name = json["0"]["productname"].string {
-                        print(name)
+                        
                         self.productNameLabel.text = name
                     }
                     
                     if let imageURL = json["0"]["imageurl"].string {
-//                        print(imageURL)
+                        
                         if self.verifyUrl(imageURL) {
                             self.productImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: imageURL)!)!)
                         }
