@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-
+import CloudKit
 
 class AddProductViewController: UIViewController, UIPickerViewDelegate {
     
@@ -18,6 +18,8 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate {
     
     
     let pickerData = ["PETE SPI CODE:1","HDPE SPI CODE:2," ,"PVC SPI CODE:3" , "LDPE SPI CODE:4",  "PP SPI CODE:5" , "PS SPI CODE:6" , "SHELF-STABLE CARTON", "REFRIGERATED CARTON" ,"GLASS GREEN", "GLASS CLEAR","GLASS BROWN", "PAPER" , "CARDBOARD" , "NEWSPRINT" ,"ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS" ]
+    
+    var UPC: String!
    
     
     override func viewDidLoad() {
@@ -28,10 +30,26 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate {
 //            .responseJSON { response in
 //                
 //        }
+        print(UPC)
         
     }
+    
     @IBAction func addProductToDatabase(sender: AnyObject) {
-        print(productPicker)
+        
+        let productUPC = CKRecordID(recordName: UPC)
+        let productRecord = CKRecord(recordType: "Products", recordID: productUPC)
+        
+        let container = CKContainer.defaultContainer()
+        let publicDatabase = container.privateCloudDatabase
+        
+        publicDatabase.saveRecord(productRecord) { (record, error) -> Void in
+            if error != nil {
+                print(error)
+            }
+            else {
+                print("done")
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

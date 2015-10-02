@@ -141,6 +141,7 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
     }
     
     @IBAction func toAddProduct(sender: AnyObject) {
+        lastCapturedCode = "0892685001003"
         performSegueWithIdentifier("toAddProductSegue", sender: self)
     }
     
@@ -197,6 +198,10 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
         if segue.identifier == "toProductInfoSegue" {
             let productInfoViewController = segue.destinationViewController as! ProductInfoViewController
             productInfoViewController.scannedUPC = lastCapturedCode
+        }
+        else if segue.identifier == "toAddProductSegue" {
+            let addProductViewController = segue.destinationViewController as! AddProductViewController
+            addProductViewController.UPC = lastCapturedCode
         }
     }
 
