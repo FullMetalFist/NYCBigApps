@@ -63,7 +63,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scanner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vn-8v-hFY">
                                 <rect key="frame" x="128" y="273" width="64" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fN-1M-izg">
@@ -87,11 +87,20 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHM-hU-cE5">
+                                <rect key="frame" x="20" y="72" width="30" height="30"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="toAddProduct:" destination="giw-fh-jhR" eventType="touchUpInside" id="7iN-LA-yGP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6fN-1M-izg" firstAttribute="top" secondItem="8gt-Bw-buY" secondAttribute="bottom" constant="8" id="AW5-IC-S1F"/>
                             <constraint firstAttribute="trailing" secondItem="6fN-1M-izg" secondAttribute="trailing" constant="20" id="tpB-PJ-NmK"/>
+                            <constraint firstItem="yHM-hU-cE5" firstAttribute="leading" secondItem="FZG-JH-UZc" secondAttribute="leading" constant="20" id="uF3-7u-qk6"/>
+                            <constraint firstItem="yHM-hU-cE5" firstAttribute="top" secondItem="8gt-Bw-buY" secondAttribute="bottom" constant="8" id="v7Q-gd-gnK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="M1B-uq-doa"/>
@@ -99,7 +108,7 @@
                         <outlet property="videoView" destination="FZG-JH-UZc" id="TDI-Qp-mf1"/>
                         <segue destination="BYZ-38-t0r" kind="modal" identifier="toLoginSegue" id="FNM-gk-4f2"/>
                         <segue destination="1PX-ug-F7f" kind="push" identifier="toProductInfoSegue" id="m8x-lW-tSk"/>
-                        <segue destination="LNm-kN-zp5" kind="push" id="XTR-ZO-iHe"/>
+                        <segue destination="LNm-kN-zp5" kind="push" identifier="toAddProductSegue" id="XTR-ZO-iHe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ek-KO-uM4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -124,7 +133,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmB-yO-adh">
                                 <rect key="frame" x="168" y="64" width="152" height="160"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -165,19 +174,21 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjQ-ep-30t">
                                 <rect key="frame" x="168" y="64" width="152" height="160"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvy-Px-9VC">
                                 <rect key="frame" x="72" y="456" width="176" height="30"/>
                                 <state key="normal" title="Add Product To Database"/>
+                                <connections>
+                                    <action selector="addProductToDatabase:" destination="LNm-kN-zp5" eventType="touchUpInside" id="Vfh-o3-eQf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="R05-Bu-UDh"/>
                     <connections>
-                        <outlet property="addProductToDatabasePressed" destination="rvy-Px-9VC" id="non-S2-TGp"/>
                         <outlet property="productImageView" destination="dGU-GZ-DAV" id="60t-Px-0W2"/>
                         <outlet property="productLabel" destination="OjQ-ep-30t" id="1Y4-GL-inI"/>
                         <outlet property="productPicker" destination="wWv-2C-ckN" id="oAr-1t-3dl"/>
@@ -202,7 +213,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Charts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWl-T0-cb8">
                                 <rect key="frame" x="134" y="273" width="52" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -229,7 +240,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="List of products" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVf-8I-zFa">
                                 <rect key="frame" x="100" y="273" width="120" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

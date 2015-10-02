@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 
-class AddProductViewController: UIViewController {
+class AddProductViewController: UIViewController, UIPickerViewDelegate {
     
     @IBOutlet weak var productLabel: UILabel!
     @IBOutlet weak var productImageView: UIImageView!
@@ -36,6 +36,9 @@ class AddProductViewController: UIViewController {
                 }
         }
         
+    }
+    @IBAction func addProductToDatabase(sender: AnyObject) {
+        print(productPicker)
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,10 +70,9 @@ class AddProductViewController: UIViewController {
         return pickerLabel
     }
     
-    
-
-    
-    @IBOutlet weak var addProductToDatabasePressed: UIButton!
-    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        print(pickerData[row])
+    }
 }
 

@@ -105,8 +105,7 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
         
         view.addSubview(qrCodeFrameView!)
         view.bringSubviewToFront(qrCodeFrameView!)
-        view.bringSubviewToFront(scanButton!)
-        view.bringSubviewToFront(messageLabel!)
+         view.bringSubviewToFront(messageLabel!)
         
     }
     
@@ -137,25 +136,15 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
         }
     }
     
-    
-    
-    @IBAction func scanClicked(sender: UIButton) {
-        
-        self.barcodeScanned = { (barcode:String) in
-            self.navigationController?.popViewControllerAnimated(true)
-            print("Received following barcode: \(barcode)")
-            
-            dispatch_async(dispatch_get_main_queue(),{
-                
-                // self.navigationController?.pushViewController(viewcontroller, animated: true)
-            })
-        }
-    }
-    
     @IBAction func toProductDetail(sender: AnyObject) {
         lastCapturedCode = "0892685001003"
         performSegueWithIdentifier("toProductInfoSegue", sender: self)
     }
+    
+    @IBAction func toAddProduct(sender: AnyObject) {
+        performSegueWithIdentifier("toAddProductSegue", sender: self)
+    }
+    
     
     override func viewDidLayoutSubviews() {
         

@@ -29,21 +29,17 @@ class ProductInfoViewController: UIViewController {
         print(scannedUPC)
         Alamofire.request(.GET, URLString, parameters: ["access_token" : access_token ,"upc": scannedUPC])
             .responseJSON { response in
-//                print(response.request)  // original URL request
-//                print(response.response) // URL response
-//                print(response.data)     // server data
-//                print(response.result)   // result of response serialization
                 
                 if let data = response.data {
                     let json = JSON(data: data)
-                    print(json)
+//                    print(json)
                     if let name = json["0"]["productname"].string {
                         print(name)
                         self.productNameLabel.text = name
                     }
                     
                     if let imageURL = json["0"]["imageurl"].string {
-                        print(imageURL)
+//                        print(imageURL)
                         if self.verifyUrl(imageURL) {
                             self.productImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: imageURL)!)!)
                         }
@@ -56,13 +52,6 @@ class ProductInfoViewController: UIViewController {
                 }
                 
                 
-//                if let JSON = response.result.value {
-//                    print("JSON: \(JSON)")
-//                    
-//                    print(JSON[0]["0 ="])
-////                    self.productImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: JSON["imageurl"] as! String)!)!)
-//                    self.productNameLabel.text = JSON["productname"] as? String
-//                }
         }
         
     }
