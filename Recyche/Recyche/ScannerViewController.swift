@@ -15,8 +15,6 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
 
 {
 
-
-    @IBOutlet  weak var messageLabel: UILabel!
     @IBOutlet weak var videoView:UIView!
     
     var captureSession:AVCaptureSession?
