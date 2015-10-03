@@ -18,61 +18,18 @@ let UPC = "0892685001003"
 
 class ProductInfoViewController: UIViewController {
     
-    var scannedUPC: String!
-    
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print(scannedUPC)
-        Alamofire.request(.GET, URLString, parameters: ["access_token" : access_token ,"upc": scannedUPC])
-            .responseJSON { response in
                 
-                if let data = response.data {
-                    let json = JSON(data: data)
-                    
-                    if let name = json["0"]["productname"].string {
-                        
-                        self.productNameLabel.text = name
-                    }
-                    
-                    if let imageURL = json["0"]["imageurl"].string {
-                        
-                        if self.verifyUrl(imageURL) {
-                            self.productImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: imageURL)!)!)
-                        }
-                        else {
-                            self.productNameLabel.text = "No Product Found!"
-                        }
-                        
-                    }
-                    
-                }
-                
-                
-        }
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resour  ces that can be recreated.
     }
-    
-    func verifyUrl (urlString: String?) -> Bool {
-        //Check for nil
-        if let urlString = urlString {
-            // create NSURL instance
-            if let url = NSURL(string: urlString) {
-                // check if your application can open the NSURL instance
-                return UIApplication.sharedApplication().canOpenURL(url)
-            }
-        }
-        return false
-    }
-    
-    
 }
 

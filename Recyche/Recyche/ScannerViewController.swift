@@ -10,10 +10,9 @@ import UIKit
 import AVFoundation
 import FBSDKCoreKit
 import FBSDKLoginKit
+import CloudKit
 
-class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDelegate
-
-{
+class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     @IBOutlet weak var videoView:UIView!
     
@@ -133,12 +132,33 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
     
     @IBAction func toProductDetail(sender: AnyObject) {
         lastCapturedCode = "0892685001003"
-        performSegueWithIdentifier("toProductInfoSegue", sender: self)
+        databaseCheck(lastCapturedCode!)
     }
     
     @IBAction func toAddProduct(sender: AnyObject) {
         lastCapturedCode = "0892685001001"
-        performSegueWithIdentifier("toAddProductSegue", sender: self)
+        databaseCheck(lastCapturedCode!)
+    }
+    
+    func databaseCheck(upc: String) {
+        
+        let container = CKContainer.defaultContainer()
+        let publicData = container.publicCloudDatabase
+        
+        publicData.fetchRecordWithID(CKRecordID(recordName: upc)) { (record, error) -> Void in
+            if error == nil && record != nil {
+                print(record)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.performSegueWithIdentifier("toProductInfoSegue", sender: self)
+                })
+            }
+            else {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.performSegueWithIdentifier("toAddProductSegue", sender: self)
+                })
+                print(error?.userInfo)
+            }
+        }
     }
     
     
@@ -168,8 +188,12 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
             
             if metadataObj.stringValue != nil {
                 captureSession?.stopRunning()
+                
                 lastCapturedCode = metadataObj.stringValue
-                performSegueWithIdentifier("toProductInfoSegue", sender: self)
+                databaseCheck(metadataObj.stringValue)
+                
+                
+//                performSegueWithIdentifier("toProductInfoSegue", sender: self)
 //                messageLabel.text = metadataObj.stringValue
 //                lastCapturedCode = metadataObj.stringValue
             }
@@ -190,13 +214,9 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toProductInfoSegue" {
-            let productInfoViewController = segue.destinationViewController as! ProductInfoViewController
-            productInfoViewController.scannedUPC = lastCapturedCode
-        }
-        else if segue.identifier == "toAddProductSegue" {
+        if segue.identifier == "toAddProductSegue" {
             let addProductViewController = segue.destinationViewController as! AddProductViewController
-            addProductViewController.UPC = lastCapturedCode
+            addProductViewController.scannedUPC = lastCapturedCode
         }
     }
 
