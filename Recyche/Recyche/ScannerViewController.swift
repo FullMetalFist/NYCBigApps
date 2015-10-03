@@ -15,8 +15,6 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
 
 {
 
-
-    @IBOutlet  weak var messageLabel: UILabel!
     @IBOutlet weak var videoView:UIView!
     
     var captureSession:AVCaptureSession?
@@ -95,7 +93,6 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
         
         captureSession?.startRunning()
         
-        view.bringSubviewToFront(messageLabel)
         
         qrCodeFrameView = UIView()
         qrCodeFrameView?.layer.borderColor = UIColor.greenColor().CGColor
@@ -104,7 +101,6 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
         
         view.addSubview(qrCodeFrameView!)
         view.bringSubviewToFront(qrCodeFrameView!)
-         view.bringSubviewToFront(messageLabel!)
         
     }
     
@@ -158,7 +154,6 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
         if metadataObjects == nil || metadataObjects.count == 0
         {
             qrCodeFrameView?.frame = CGRectZero
-            messageLabel.text = "No UPC Code is detected"
             
             return
         }
