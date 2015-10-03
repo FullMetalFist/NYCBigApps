@@ -94,9 +94,7 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
         
         
         captureSession?.startRunning()
-        
-        view.bringSubviewToFront(messageLabel)
-        
+                
         qrCodeFrameView = UIView()
         qrCodeFrameView?.layer.borderColor = UIColor.greenColor().CGColor
         qrCodeFrameView?.layer.borderWidth = 3
@@ -104,7 +102,6 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
         
         view.addSubview(qrCodeFrameView!)
         view.bringSubviewToFront(qrCodeFrameView!)
-         view.bringSubviewToFront(messageLabel!)
         
     }
     
