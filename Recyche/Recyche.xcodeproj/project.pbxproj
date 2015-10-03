@@ -20,7 +20,7 @@
 		FA1BAED11BAF162200D24788 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED01BAF162200D24788 /* ProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA1BAED31BAF163400D24788 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED21BAF163400D24788 /* ChartsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA1BAED51BAF164B00D24788 /* ListOfProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED41BAF164B00D24788 /* ListOfProductsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		FA4184BC1BBED5FB00F70AA2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4184BB1BBED5FB00F70AA2 /* CloudKit.framework */; };
+		FAC023691BBFA9CA0049C6C2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC023681BBFA9CA0049C6C2 /* CloudKit.framework */; };
 		FAE29D7D1BBB63EF003325DA /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE29D7A1BBB63EF003325DA /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
 		FAE29D7E1BBB63EF003325DA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE29D7B1BBB63EF003325DA /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
 		FAE29D7F1BBB63EF003325DA /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE29D7C1BBB63EF003325DA /* FBSDKShareKit.framework */; settings = {ASSET_TAGS = (); }; };
@@ -103,7 +103,7 @@
 		FA1BAED21BAF163400D24788 /* ChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		FA1BAED41BAF164B00D24788 /* ListOfProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfProductsViewController.swift; sourceTree = "<group>"; };
 		FA4184BA1BBED5EE00F70AA2 /* Recyche.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Recyche.entitlements; sourceTree = "<group>"; };
-		FA4184BB1BBED5FB00F70AA2 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		FAC023681BBFA9CA0049C6C2 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		FAE29D7A1BBB63EF003325DA /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		FAE29D7B1BBB63EF003325DA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		FAE29D7C1BBB63EF003325DA /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA4184BC1BBED5FB00F70AA2 /* CloudKit.framework in Frameworks */,
+				FAC023691BBFA9CA0049C6C2 /* CloudKit.framework in Frameworks */,
 				FAE29D7F1BBB63EF003325DA /* FBSDKShareKit.framework in Frameworks */,
 				4E9F7A101BB9E0B60012EF51 /* Alamofire.framework in Frameworks */,
 				FAE29D7D1BBB63EF003325DA /* FBSDKCoreKit.framework in Frameworks */,
@@ -142,7 +142,7 @@
 		7CCEA0041BADB48A00F6D423 = {
 			isa = PBXGroup;
 			children = (
-				FA4184BB1BBED5FB00F70AA2 /* CloudKit.framework */,
+				FAC023681BBFA9CA0049C6C2 /* CloudKit.framework */,
 				4E9F79FE1BB9E09A0012EF51 /* Alamofire.xcodeproj */,
 				7CCEA00F1BADB48A00F6D423 /* Recyche */,
 				7CCEA00E1BADB48A00F6D423 /* Products */,

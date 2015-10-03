@@ -189,6 +189,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="R05-Bu-UDh"/>
                     <connections>
+                        <outlet property="addProductToDatabaseButton" destination="rvy-Px-9VC" id="tnS-WP-SSj"/>
                         <outlet property="productImageView" destination="dGU-GZ-DAV" id="60t-Px-0W2"/>
                         <outlet property="productLabel" destination="OjQ-ep-30t" id="1Y4-GL-inI"/>
                         <outlet property="productPicker" destination="wWv-2C-ckN" id="oAr-1t-3dl"/>

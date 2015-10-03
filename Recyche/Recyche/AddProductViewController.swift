@@ -15,39 +15,48 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate {
     @IBOutlet weak var productLabel: UILabel!
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productPicker: UIPickerView!
-    
+    @IBOutlet weak var addProductToDatabaseButton: UIButton!
     
     let pickerData = ["PETE SPI CODE:1","HDPE SPI CODE:2," ,"PVC SPI CODE:3" , "LDPE SPI CODE:4",  "PP SPI CODE:5" , "PS SPI CODE:6" , "SHELF-STABLE CARTON", "REFRIGERATED CARTON" ,"GLASS GREEN", "GLASS CLEAR","GLASS BROWN", "PAPER" , "CARDBOARD" , "NEWSPRINT" ,"ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS" ]
     
     var UPC: String!
-   
+    var material: String!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        addProductToDatabaseButton.enabled = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-//        Alamofire.request(.GET, URLString, parameters: ["access_token" : access_token ,"upc": UPC_code])
-//            .responseJSON { response in
-//                
-//        }
-        print(UPC)
+        let container = CKContainer.defaultContainer()
+        let publicData = container.publicCloudDatabase
+        
+        let query = CKQuery(recordType: "Product", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
+        publicData.performQuery(query, inZoneWithID: nil) { (records, error) -> Void in
+            if error == nil {
+                if let results = records {
+                    print(results[0].recordID.recordName)
+                }
+            }
+        }
         
     }
     
     @IBAction func addProductToDatabase(sender: AnyObject) {
         
-        let productUPC = CKRecordID(recordName: UPC)
-        let productRecord = CKRecord(recordType: "Products", recordID: productUPC)
-        
         let container = CKContainer.defaultContainer()
-        let publicDatabase = container.privateCloudDatabase
+        let publicData = container.publicCloudDatabase
         
-        publicDatabase.saveRecord(productRecord) { (record, error) -> Void in
+        let product = CKRecord(recordType: "Product", recordID: CKRecordID(recordName: UPC))
+        product.setValue("Product Name", forKey: "name")
+        product.setValue(material, forKey: "material")
+        
+        publicData.saveRecord(product) { (record, error) -> Void in
             if error != nil {
                 print(error)
-            }
-            else {
-                print("done")
             }
         }
     }
@@ -83,7 +92,11 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate {
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        print(pickerData[row])
+        material = pickerData[row]
+        
+        if !addProductToDatabaseButton.enabled {
+            addProductToDatabaseButton.enabled = true
+        }
     }
 }
 

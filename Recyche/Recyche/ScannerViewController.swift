@@ -137,7 +137,7 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
     }
     
     @IBAction func toAddProduct(sender: AnyObject) {
-        lastCapturedCode = "0892685001003"
+        lastCapturedCode = "0892685001001"
         performSegueWithIdentifier("toAddProductSegue", sender: self)
     }
     
