@@ -152,7 +152,6 @@ class ScannerViewController: UIViewController , AVCaptureMetadataOutputObjectsDe
         if metadataObjects == nil || metadataObjects.count == 0
         {
             qrCodeFrameView?.frame = CGRectZero
-            messageLabel.text = "No UPC Code is detected"
             
             return
         }
