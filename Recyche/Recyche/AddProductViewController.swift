@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import CloudKit
 
-class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var productImageView: UIImageView!
@@ -50,6 +50,8 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
                     }
                     else {
                         self.productNameLabel.text = "Add Product Name"
+                        self.addImageButton.enabled = true
+                        self.productNameTextField.enabled = true
                     }
                 }
             }
@@ -65,6 +67,14 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         product.setValue("Product Name", forKey: "name")
         product.setValue(material, forKey: "material")
         
+        let imageData = UIImageJPEGRepresentation(productImageView.image!, 1)
+        let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+        let fileURL = documentsURL.URLByAppendingPathComponent("imageasset")
+        imageData?.writeToURL(fileURL, atomically: true)
+        
+        let asset = CKAsset(fileURL: fileURL)
+        product.setValue(asset, forKey: "image")
+        
         publicData.saveRecord(product) { (record, error) -> Void in
             if error != nil {
                 print(error)
@@ -76,9 +86,14 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
-        imagePicker.sourceType = .Camera
-        presentViewController(imagePicker, animated: true, completion: nil)
-        
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            imagePicker.sourceType = .Camera
+            presentViewController(imagePicker, animated: true, completion: nil)
+        }
+        else {
+            print("No Camera available!")
+        }
+                
     }
     
     override func didReceiveMemoryWarning() {
@@ -121,6 +136,11 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         dismissViewControllerAnimated(true, completion: nil)
         
         productImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        productNameTextField.resignFirstResponder()
+        return true
     }
     
     func verifyUrl (urlString: String?) -> Bool {
