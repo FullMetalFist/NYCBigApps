@@ -368,7 +368,7 @@
                     <navigationItem key="navigationItem" id="uMV-gu-8ZY"/>
                     <connections>
                         <segue destination="cET-ym-v4x" kind="push" id="jPU-Xx-YDG"/>
-                        <segue destination="Gkq-nT-skO" kind="push" id="cQM-Kd-TNF"/>
+                        <segue destination="Gkq-nT-skO" kind="push" identifier="toListOfProductsSegue" id="cQM-Kd-TNF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szZ-H9-NPE" userLabel="First Responder" sceneMemberID="firstResponder"/>

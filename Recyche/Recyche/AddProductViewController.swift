@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import CloudKit
+import CoreData
 
 class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
@@ -96,9 +97,23 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
             }
             else {
                 print(record?.recordID.recordName)
+                self.addToPersonalDatabase()
             }
             self.activityIndicator.stopAnimating()
             self.loadingView.hidden = true
+        }
+    }
+    
+    func addToPersonalDatabase() {
+        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        
+        Product.createInManagedObjectContext(managedObjectContext, _name: productNameLabel.text!, _material: material, _numberOfScans: 1)
+        
+        do {
+            try managedObjectContext.save()
+        }
+        catch _ {
+            print("Error?")
         }
     }
     
