@@ -132,7 +132,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     @IBAction func toProductDetail(sender: AnyObject) {
-        lastCapturedCode = "0892685001003"
+        lastCapturedCode = "0123456789012"
         databaseCheck(lastCapturedCode!)
     }
     
