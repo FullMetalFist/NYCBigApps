@@ -8,71 +8,69 @@
 
 import UIKit
 import Alamofire
+import CloudKit
 
 let URLString = "http://www.searchupc.com/handlers/upcsearch.ashx?request_type=3"
 let access_token = "C6D5DA80-A126-4235-A35A-26E73FC64C2F"
 let UPC_code =  "037000088806"
 let UPC = "0892685001003"
 
-
-
 class ProductInfoViewController: UIViewController {
     
-    var scannedUPC: String!
+    var scannedProduct: CKRecord!
     
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var numberOfScansLabel: UILabel!
+    @IBOutlet weak var materialLabel: UILabel!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print(scannedProduct)
+        
+        productNameLabel.text = scannedProduct.valueForKey("name") as? String
+        let numberOfScans = scannedProduct.valueForKey("numberOfScans") as? Int
+        numberOfScansLabel.text = "This product has been recycled \(numberOfScans!) times."
+        materialLabel.text = scannedProduct.valueForKey("material") as? String
+        
+        let imageAsset = scannedProduct.valueForKey("image") as! CKAsset
+        productImageView.image = UIImage(contentsOfFile: imageAsset.fileURL.path!)
+        
+        updateProduct()
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        print(scannedUPC)
-        Alamofire.request(.GET, URLString, parameters: ["access_token" : access_token ,"upc": scannedUPC])
-            .responseJSON { response in
-                
-                if let data = response.data {
-                    let json = JSON(data: data)
-                    
-                    if let name = json["0"]["productname"].string {
-                        
-                        self.productNameLabel.text = name
-                    }
-                    
-                    if let imageURL = json["0"]["imageurl"].string {
-                        
-                        if self.verifyUrl(imageURL) {
-                            self.productImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: imageURL)!)!)
-                        }
-                        else {
-                            self.productNameLabel.text = "No Product Found!"
-                        }
-                        
-                    }
-                    
+        
+        
+    }
+    
+    func updateProduct() {
+        let publicData = CKContainer.defaultContainer().publicCloudDatabase
+        
+        var timesScaned = scannedProduct.valueForKey("numberOfScans") as! Int
+        
+        scannedProduct.setValue(++timesScaned, forKey: "numberOfScans")
+        
+        publicData.saveRecord(scannedProduct) { (record, error) -> Void in
+            if error != nil {
+                print(error)
+            }
+            else {
+                print("Record updated!")
+                if let product = record, let numberOfScans = product.valueForKey("numberOfScans") {
+                    self.numberOfScansLabel.text = "This product has been recycled \(numberOfScans) times."
                 }
                 
-                
+            }
         }
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resour  ces that can be recreated.
     }
-    
-    func verifyUrl (urlString: String?) -> Bool {
-        //Check for nil
-        if let urlString = urlString {
-            // create NSURL instance
-            if let url = NSURL(string: urlString) {
-                // check if your application can open the NSURL instance
-                return UIApplication.sharedApplication().canOpenURL(url)
-            }
-        }
-        return false
-    }
-    
-    
 }
 
