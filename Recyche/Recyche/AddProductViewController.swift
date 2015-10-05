@@ -75,8 +75,8 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         let container = CKContainer.defaultContainer()
         let publicData = container.publicCloudDatabase
         
-        let product = CKRecord(recordType: "Product", recordID: CKRecordID(recordName: UPC))
-        product.setValue("Product Name", forKey: "name")
+        let product = CKRecord(recordType: "Product", recordID: CKRecordID(recordName: scannedUPC))
+        product.setValue(productNameLabel.text, forKey: "name")
         product.setValue(material, forKey: "material")
         product.setValue(1, forKey: "numberOfScans")
         
@@ -93,6 +93,9 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         publicData.saveRecord(product) { (record, error) -> Void in
             if error != nil {
                 print(error)
+            }
+            else {
+                print(record?.recordID.recordName)
             }
             self.activityIndicator.stopAnimating()
             self.loadingView.hidden = true

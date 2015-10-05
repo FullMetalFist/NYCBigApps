@@ -22,6 +22,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var captureDevice: AVCaptureDevice?
     
     var lastCapturedCode:String?
+    var scannedProduct: CKRecord!
     
     
     var barcodeScanned:((String) ->())?
@@ -147,23 +148,21 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         publicData.fetchRecordWithID(CKRecordID(recordName: upc)) { (record, error) -> Void in
             if error == nil && record != nil {
-                print(record)
+                self.scannedProduct = record
+                print(record!.recordID.recordName)
+                print("is in")
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.performSegueWithIdentifier("toProductInfoSegue", sender: self)
                 })
             }
             else {
+                print("add")
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.performSegueWithIdentifier("toAddProductSegue", sender: self)
                 })
                 print(error?.userInfo)
             }
         }
-    }
-    
-    
-    override func viewDidLayoutSubviews() {
-        
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -189,6 +188,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             if metadataObj.stringValue != nil {
                 captureSession?.stopRunning()
                 
+                print(metadataObj.stringValue)
                 lastCapturedCode = metadataObj.stringValue
                 databaseCheck(metadataObj.stringValue)
                 
@@ -218,6 +218,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             let addProductViewController = segue.destinationViewController as! AddProductViewController
             addProductViewController.scannedUPC = lastCapturedCode
         }
+        else if segue.identifier == "toProductInfoSegue" {
+            let productInfoViewController = segue.destinationViewController as! ProductInfoViewController
+            productInfoViewController.scannedProduct = scannedProduct
+        }
+        
     }
 
 }

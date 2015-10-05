@@ -126,12 +126,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kxo-Gm-GIH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kxo-Gm-GIH">
                                 <rect key="frame" x="0.0" y="64" width="160" height="160"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="PO6-tw-JdH"/>
+                                    <constraint firstAttribute="height" constant="160" id="dhY-xu-RNq"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmB-yO-adh">
-                                <rect key="frame" x="168" y="64" width="152" height="160"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This item has been recycled x times." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCX-AD-UPY">
+                                <rect key="frame" x="20" y="232" width="280" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="material" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvF-ei-r5Y">
+                                <rect key="frame" x="20" y="260" width="280" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmB-yO-adh">
+                                <rect key="frame" x="190" y="72" width="110" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -140,9 +158,23 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sCX-AD-UPY" firstAttribute="leading" secondItem="qdN-4o-ZlJ" secondAttribute="leading" constant="20" id="0aE-lS-q6m"/>
+                            <constraint firstAttribute="trailing" secondItem="DmB-yO-adh" secondAttribute="trailing" constant="20" id="7op-2u-hZe"/>
+                            <constraint firstAttribute="trailing" secondItem="nvF-ei-r5Y" secondAttribute="trailing" constant="20" id="Ix4-PG-IuG"/>
+                            <constraint firstItem="sCX-AD-UPY" firstAttribute="top" secondItem="kxo-Gm-GIH" secondAttribute="bottom" constant="8" id="dLC-kI-Pwy"/>
+                            <constraint firstItem="DmB-yO-adh" firstAttribute="top" secondItem="p9b-Gl-jit" secondAttribute="bottom" constant="8" id="geO-Je-zHs"/>
+                            <constraint firstItem="kxo-Gm-GIH" firstAttribute="leading" secondItem="qdN-4o-ZlJ" secondAttribute="leading" id="hHu-sV-LqE"/>
+                            <constraint firstItem="kxo-Gm-GIH" firstAttribute="top" secondItem="p9b-Gl-jit" secondAttribute="bottom" id="in5-4C-Va8"/>
+                            <constraint firstItem="nvF-ei-r5Y" firstAttribute="leading" secondItem="qdN-4o-ZlJ" secondAttribute="leading" constant="20" id="ojc-RC-PNy"/>
+                            <constraint firstAttribute="trailing" secondItem="sCX-AD-UPY" secondAttribute="trailing" constant="20" id="qu3-HN-SGx"/>
+                            <constraint firstItem="nvF-ei-r5Y" firstAttribute="top" secondItem="sCX-AD-UPY" secondAttribute="bottom" constant="7.5" id="tMM-I7-QSC"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jrW-V2-JNU"/>
                     <connections>
+                        <outlet property="materialLabel" destination="nvF-ei-r5Y" id="Sna-p4-gVK"/>
+                        <outlet property="numberOfScansLabel" destination="sCX-AD-UPY" id="Abr-ay-Uyg"/>
                         <outlet property="productImageView" destination="kxo-Gm-GIH" id="XiX-dX-myj"/>
                         <outlet property="productNameLabel" destination="DmB-yO-adh" id="QMW-Gh-ec0"/>
                     </connections>
