@@ -36,7 +36,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         AVMetadataObjectTypeCode93Code,
         AVMetadataObjectTypeCode128Code,
         AVMetadataObjectTypePDF417Code,
-        AVMetadataObjectTypeQRCode,
         AVMetadataObjectTypeAztecCode]
     
     
@@ -89,7 +88,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         videoPreviewLayer?.videoGravity = AVLayerVideoGravityResize
         videoPreviewLayer?.frame = videoView.layer.bounds
         videoView.layer.addSublayer(videoPreviewLayer!)
-        
+        videoView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "restartScanner"))
         
         captureSession?.startRunning()
         qrCodeFrameView = UIView()
@@ -160,6 +159,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 })
                 print(error?.userInfo)
             }
+        }
+    }
+    
+    func restartScanner() {
+        if !captureSession!.running {
+            captureSession!.startRunning()
+            qrCodeFrameView?.frame = CGRectZero
         }
     }
     
