@@ -18,6 +18,8 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     @IBOutlet weak var addProductToDatabaseButton: UIButton!
     @IBOutlet weak var productNameTextField: UITextField!
     @IBOutlet weak var addImageButton: UIButton!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let pickerData = ["PETE SPI CODE:1","HDPE SPI CODE:2," ,"PVC SPI CODE:3" , "LDPE SPI CODE:4",  "PP SPI CODE:5" , "PS SPI CODE:6" , "SHELF-STABLE CARTON", "REFRIGERATED CARTON" ,"GLASS GREEN", "GLASS CLEAR","GLASS BROWN", "PAPER" , "CARDBOARD" , "NEWSPRINT" ,"ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS" ]
     
@@ -33,26 +35,32 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadingView.hidden = false
+        activityIndicator.hidden = false
+        activityIndicator.startAnimating()
+        
         Alamofire.request(.GET, URLString, parameters: ["access_token" : access_token ,"upc": scannedUPC]).responseJSON { response in
+            
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.hidden = true
+            self.loadingView.hidden = true
             
             if let data = response.data {
                 let json = JSON(data: data)
                 
-                if let name = json["0"]["productname"].string {
-                    
+                if let name = json["0"]["productname"].string, let imageURL = json["0"]["imageurl"].string {
                     self.productNameLabel.text = name
-                }
-                
-                if let imageURL = json["0"]["imageurl"].string {
                     
                     if self.verifyUrl(imageURL) {
                         self.productImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: imageURL)!)!)
                     }
-                    else {
-                        self.productNameLabel.text = "Add Product Name"
+                }
+                else {
+                    self.productNameLabel.text = "Add Product Name"
+                    if UIImagePickerController.isSourceTypeAvailable(.Camera) {
                         self.addImageButton.enabled = true
-                        self.productNameTextField.enabled = true
                     }
+                    self.productNameTextField.enabled = true
                 }
             }
         }
@@ -60,25 +68,34 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     
     @IBAction func addProductToDatabase(sender: AnyObject) {
         
+        loadingView.hidden = false
+        activityIndicator.hidden = false
+        activityIndicator.startAnimating()
+        
         let container = CKContainer.defaultContainer()
         let publicData = container.publicCloudDatabase
         
         let product = CKRecord(recordType: "Product", recordID: CKRecordID(recordName: UPC))
         product.setValue("Product Name", forKey: "name")
         product.setValue(material, forKey: "material")
+        product.setValue(1, forKey: "numberOfScans")
         
-        let imageData = UIImageJPEGRepresentation(productImageView.image!, 1)
-        let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-        let fileURL = documentsURL.URLByAppendingPathComponent("imageasset")
-        imageData?.writeToURL(fileURL, atomically: true)
-        
-        let asset = CKAsset(fileURL: fileURL)
-        product.setValue(asset, forKey: "image")
+        if productImageView.image != nil {
+            let imageData = UIImageJPEGRepresentation(productImageView.image!, 1)
+            let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+            let fileURL = documentsURL.URLByAppendingPathComponent("imageasset")
+            imageData?.writeToURL(fileURL, atomically: true)
+            
+            let asset = CKAsset(fileURL: fileURL)
+            product.setValue(asset, forKey: "image")
+        }
         
         publicData.saveRecord(product) { (record, error) -> Void in
             if error != nil {
                 print(error)
             }
+            self.activityIndicator.stopAnimating()
+            self.loadingView.hidden = true
         }
     }
     

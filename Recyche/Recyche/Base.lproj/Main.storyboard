@@ -180,7 +180,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjQ-ep-30t">
-                                <rect key="frame" x="168" y="114" width="110" height="21"/>
+                                <rect key="frame" x="168" y="114" width="110" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -195,7 +195,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Product name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ToN-hQ-NbY">
-                                <rect key="frame" x="168" y="143" width="132" height="30"/>
+                                <rect key="frame" x="168" y="142" width="132" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -211,10 +211,27 @@
                                     <action selector="addImage:" destination="LNm-kN-zp5" eventType="touchUpInside" id="8VS-9C-0Fj"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TeV-Xo-PTB" userLabel="Loading View">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="B0B-JA-uUN">
+                                        <rect key="frame" x="150" y="218" width="20" height="20"/>
+                                        <animations/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="B0B-JA-uUN" firstAttribute="centerX" secondItem="TeV-Xo-PTB" secondAttribute="centerX" id="HtA-Z5-Qxk"/>
+                                    <constraint firstItem="B0B-JA-uUN" firstAttribute="centerY" secondItem="TeV-Xo-PTB" secondAttribute="centerY" id="wIJ-lg-HjY"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="TeV-Xo-PTB" firstAttribute="leading" secondItem="J8O-Xg-MZz" secondAttribute="leading" id="523-zY-9fh"/>
+                            <constraint firstItem="EcO-Xq-l2E" firstAttribute="top" secondItem="TeV-Xo-PTB" secondAttribute="bottom" id="79y-oS-UGt"/>
                             <constraint firstItem="dGU-GZ-DAV" firstAttribute="leading" secondItem="J8O-Xg-MZz" secondAttribute="leading" id="7Z5-7P-MyU"/>
                             <constraint firstItem="OjQ-ep-30t" firstAttribute="top" secondItem="GpT-td-mb9" secondAttribute="bottom" constant="50" id="9pG-ky-EcS"/>
                             <constraint firstItem="dGU-GZ-DAV" firstAttribute="top" secondItem="GpT-td-mb9" secondAttribute="bottom" id="QA7-M1-KSV"/>
@@ -223,13 +240,17 @@
                             <constraint firstAttribute="trailing" secondItem="ToN-hQ-NbY" secondAttribute="trailing" constant="20" id="UOU-JX-79P"/>
                             <constraint firstItem="evd-pz-nre" firstAttribute="bottom" secondItem="dGU-GZ-DAV" secondAttribute="bottom" id="Vsi-ml-P5O"/>
                             <constraint firstItem="OjQ-ep-30t" firstAttribute="leading" secondItem="dGU-GZ-DAV" secondAttribute="trailing" constant="8" id="mvx-wQ-MZM"/>
+                            <constraint firstItem="TeV-Xo-PTB" firstAttribute="top" secondItem="GpT-td-mb9" secondAttribute="bottom" id="pp2-Wb-gnG"/>
                             <constraint firstItem="ToN-hQ-NbY" firstAttribute="top" secondItem="OjQ-ep-30t" secondAttribute="bottom" constant="8" id="zrG-qm-S3P"/>
+                            <constraint firstAttribute="trailing" secondItem="TeV-Xo-PTB" secondAttribute="trailing" id="zs8-PW-WM0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="R05-Bu-UDh"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="B0B-JA-uUN" id="fTK-rL-rOR"/>
                         <outlet property="addImageButton" destination="evd-pz-nre" id="Lxj-6b-ywe"/>
                         <outlet property="addProductToDatabaseButton" destination="rvy-Px-9VC" id="tnS-WP-SSj"/>
+                        <outlet property="loadingView" destination="TeV-Xo-PTB" id="2zk-A1-5MG"/>
                         <outlet property="productImageView" destination="dGU-GZ-DAV" id="60t-Px-0W2"/>
                         <outlet property="productNameLabel" destination="OjQ-ep-30t" id="J4G-tC-DBC"/>
                         <outlet property="productNameTextField" destination="ToN-hQ-NbY" id="Py1-Yp-Yt2"/>
