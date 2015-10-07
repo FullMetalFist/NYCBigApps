@@ -23,6 +23,8 @@ class ProductInfoViewController: UIViewController {
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var numberOfScansLabel: UILabel!
     @IBOutlet weak var materialLabel: UILabel!
+    @IBOutlet weak var recycleInstructionsLabel: UILabel!
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,6 +38,9 @@ class ProductInfoViewController: UIViewController {
         
         let imageAsset = scannedProduct.valueForKey("image") as! CKAsset
         productImageView.image = UIImage(contentsOfFile: imageAsset.fileURL.path!)
+        
+        let dataAdded = scannedProduct.valueForKey("dateadded") as? NSDate
+        print(dataAdded)
         
         updateProduct()
         
@@ -67,6 +72,26 @@ class ProductInfoViewController: UIViewController {
             }
         }
     }
+    
+  
+    func productRecycleInformation()
+    {
+
+        
+        
+            }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
