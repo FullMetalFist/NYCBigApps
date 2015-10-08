@@ -11,12 +11,12 @@ import CoreData
 
 class Product: NSManagedObject {
     
-    class func createInManagedObjectContext(moc: NSManagedObjectContext, _name: String, _material: String, _numberOfScans: NSNumber) -> Product {
+    class func createInManagedObjectContext(moc: NSManagedObjectContext, _name: String, _material: String, _date: NSDate) -> Product {
         let newProduct = NSEntityDescription.insertNewObjectForEntityForName("Product", inManagedObjectContext: moc) as! Product
         
         newProduct.name = _name
         newProduct.material = _material
-        newProduct.numberOfScans = _numberOfScans
+        newProduct.dateadded = _date
         
         return newProduct
     }

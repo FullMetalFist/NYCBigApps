@@ -9,7 +9,9 @@
 import UIKit
 import CoreData
 
-class ListOfProductsViewController: UIViewController {
+class ListOfProductsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    var products: [Product]!
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -19,10 +21,7 @@ class ListOfProductsViewController: UIViewController {
         let fetchRequest = NSFetchRequest(entityName: "Product")
         
         do {
-            let products = try managedObjectContext.executeFetchRequest(fetchRequest) as! [Product]
-            for product in products {
-                print(product.name)
-            }
+            products = try managedObjectContext.executeFetchRequest(fetchRequest) as! [Product]
         }
         catch {
             print("Error at fetch?")
@@ -33,6 +32,25 @@ class ListOfProductsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return products.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath)
+        
+        let product = products[indexPath.row]
+        
+        cell.textLabel?.text = product.name
+        cell.detailTextLabel?.text = "\(product.dateadded!)"
+        
+        return cell
     }
 
     override func didReceiveMemoryWarning() {

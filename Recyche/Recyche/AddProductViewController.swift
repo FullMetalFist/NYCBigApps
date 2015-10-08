@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 import CloudKit
 import CoreData
 
@@ -77,7 +78,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         let publicData = container.publicCloudDatabase
         
         let product = CKRecord(recordType: "Product", recordID: CKRecordID(recordName: scannedUPC))
-        product.setValue(productNameLabel.text, forKey: "name")
+        product.setValue(productNameLabel.text! == "Add Product Name" ? productNameTextField.text! : productNameLabel.text!, forKey: "name")
         product.setValue(material, forKey: "material")
         product.setValue(1, forKey: "numberOfScans")
         
@@ -92,22 +93,27 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         }
         
         publicData.saveRecord(product) { (record, error) -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.activityIndicator.stopAnimating()
+                self.loadingView.hidden = true
+            })
+            
             if error != nil {
                 print(error)
             }
             else {
                 print(record?.recordID.recordName)
                 self.addToPersonalDatabase()
+                
             }
-            self.activityIndicator.stopAnimating()
-            self.loadingView.hidden = true
+            
         }
     }
     
     func addToPersonalDatabase() {
         let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
         
-        Product.createInManagedObjectContext(managedObjectContext, _name: productNameLabel.text!, _material: material, _numberOfScans: 1)
+        Product.createInManagedObjectContext(managedObjectContext, _name: productNameLabel.text! == "Add Product Name" ? productNameTextField.text! : productNameLabel.text!, _material: material, _date: NSDate())
         
         do {
             try managedObjectContext.save()

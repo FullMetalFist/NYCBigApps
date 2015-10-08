@@ -36,8 +36,10 @@ class ProductInfoViewController: UIViewController {
         numberOfScansLabel.text = "This product has been recycled \(numberOfScans!) times."
         materialLabel.text = scannedProduct.valueForKey("material") as? String
         
-        let imageAsset = scannedProduct.valueForKey("image") as! CKAsset
-        productImageView.image = UIImage(contentsOfFile: imageAsset.fileURL.path!)
+        if scannedProduct.valueForKey("image") != nil {
+            let imageAsset = scannedProduct.valueForKey("image") as! CKAsset
+            productImageView.image = UIImage(contentsOfFile: imageAsset.fileURL.path!)
+        }
         
         let dataAdded = scannedProduct.valueForKey("dateadded") as? NSDate
         print(dataAdded)
@@ -72,26 +74,6 @@ class ProductInfoViewController: UIViewController {
             }
         }
     }
-    
-  
-    func productRecycleInformation()
-    {
-
-        
-        
-            }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

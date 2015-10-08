@@ -16,7 +16,7 @@ extension Product {
 
     @NSManaged var name: String?
     @NSManaged var material: String?
-    @NSManaged var numberOfScans: NSNumber?
     @NSManaged var image: NSObject?
+    @NSManaged var dateadded: NSDate?
 
 }
