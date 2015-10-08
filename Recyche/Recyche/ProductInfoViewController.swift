@@ -29,12 +29,41 @@ class ProductInfoViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        print(scannedProduct)
+        print(recycleCodesInfo["metal"]!)
+        
+        for code in recycleCodes {
+            if code == scannedProduct.valueForKey("material") as! String {
+                switch code {
+                case _ where code == "PETE SPI CODE: 1", "HDPE SPI CODE: 2", "PVC SPI CODE: 3", "LDPE SPI CODE: 4", "PP SPI CODE: 5", "PS SPI CODE: 6":
+                    print("plastic")
+                    recycleInstructionsLabel.text! = recycleCodesInfo["plastic"]!
+                case _ where code == "SHELF-STABLE CARTON", "REFRIGERATED CARTON":
+                    print("carton")
+                    recycleInstructionsLabel.text! = recycleCodesInfo["carton"]!
+                case _ where code == "GLASS GREEN", "GLASS CLEAR", "GLASS BROWN":
+                    print("glass")
+                    recycleInstructionsLabel.text! = recycleCodesInfo["glass"]!
+                case _ where code == "PAPER":
+                    print("paper")
+                    recycleInstructionsLabel.text! = recycleCodesInfo["paper"]!
+                case _ where code == "CARDBOARD":
+                    print("cardboard")
+                    recycleInstructionsLabel.text! = recycleCodesInfo["cardbord"]!
+                case _ where code == "ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS":
+                    print("metal")
+                    recycleInstructionsLabel.text! = recycleCodesInfo["metal"]!
+                default:
+                    print("crap")
+                }
+            }
+            
+        }
         
         productNameLabel.text = scannedProduct.valueForKey("name") as? String
         let numberOfScans = scannedProduct.valueForKey("numberOfScans") as? Int
         numberOfScansLabel.text = "This product has been recycled \(numberOfScans!) times."
         materialLabel.text = scannedProduct.valueForKey("material") as? String
+        
         
         if scannedProduct.valueForKey("image") != nil {
             let imageAsset = scannedProduct.valueForKey("image") as! CKAsset

@@ -23,8 +23,6 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    let pickerData = ["PETE SPI CODE:1","HDPE SPI CODE:2," ,"PVC SPI CODE:3" , "LDPE SPI CODE:4",  "PP SPI CODE:5" , "PS SPI CODE:6" , "SHELF-STABLE CARTON", "REFRIGERATED CARTON" ,"GLASS GREEN", "GLASS CLEAR","GLASS BROWN", "PAPER" , "CARDBOARD" , "NEWSPRINT" ,"ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS" ]
-    
     var scannedUPC: String!
     var material: String!
     
@@ -148,16 +146,16 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+        return recycleCodes.count
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
+        return recycleCodes[row]
     }
     
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
         let pickerLabel = UILabel()
-        let titleData = pickerData[row]
+        let titleData = recycleCodes[row]
         let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Arial", size: 14.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
         pickerLabel.attributedText = myTitle
         pickerLabel.textAlignment = .Center
@@ -166,7 +164,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        material = pickerData[row]
+        material = recycleCodes[row]
         
         if !addProductToDatabaseButton.enabled {
             addProductToDatabaseButton.enabled = true
