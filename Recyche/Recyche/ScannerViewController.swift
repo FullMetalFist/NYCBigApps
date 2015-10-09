@@ -196,10 +196,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 lastCapturedCode = metadataObj.stringValue
                 databaseCheck(metadataObj.stringValue)
                 
-                
-//                performSegueWithIdentifier("toProductInfoSegue", sender: self)
-//                messageLabel.text = metadataObj.stringValue
-//                lastCapturedCode = metadataObj.stringValue
             }
         }
     }

@@ -25,6 +25,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     
     var scannedUPC: String!
     var material: String!
+    var newProduct: CKRecord!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -66,6 +67,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         }
     }
     
+    
     @IBAction func addProductToDatabase(sender: AnyObject) {
         
         loadingView.hidden = false
@@ -102,7 +104,10 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
             else {
                 print(record?.recordID.recordName)
                 self.addToPersonalDatabase()
-                
+                self.newProduct = record
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.performSegueWithIdentifier("addToInfoSegue", sender: self)
+                })
             }
             
         }
@@ -192,6 +197,13 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
             }
         }
         return false
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "addToInfoSegue" {
+            let productInfoViewController = segue.destinationViewController as! ProductInfoViewController
+            productInfoViewController.scannedProduct = newProduct
+        }
     }
 }
 
