@@ -18,17 +18,21 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productPicker: UIPickerView!
     @IBOutlet weak var addProductToDatabaseButton: UIButton!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
 
     
     var scannedUPC: String!
     var material: String!
     var newProduct: CKRecord!
+    var name: String!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         addProductToDatabaseButton.enabled = false
         addProductToDatabaseButton.alpha = 0.3
+        loadingView.hidden = true
     }
     
     override func viewDidLoad() {
@@ -39,13 +43,14 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
             if let data = response.data {
                 let json = JSON(data: data)
 
-                if let name = json["0"]["productname"].string, let imageURL = json["0"]["imageurl"].string {
-                    if name == " " {
+                if let _name = json["0"]["productname"].string, let imageURL = json["0"]["imageurl"].string {
+                    if _name == " " {
                         self.productNameLabel.text = "No product found!\nPlease choose the appropriate recycling code and save it in our database for future reference."
                         self.productImageView.image = UIImage(named: "NoImage")
                     }
                     else {
-                        self.productNameLabel.text = name
+                        self.productNameLabel.text = _name
+                        self.name = _name
                     }
                     
                     
@@ -64,13 +69,15 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     
     @IBAction func addProductToDatabase(sender: AnyObject) {
         
+        loadingView.hidden = false
+        loadingActivityIndicator.startAnimating()
         let container = CKContainer.defaultContainer()
         let publicData = container.publicCloudDatabase
         
         let product = CKRecord(recordType: "Product", recordID: CKRecordID(recordName: scannedUPC))
         product.setValue(material, forKey: "material")
         product.setValue(1, forKey: "numberOfScans")
-        product.setValue("Product", forKey: "name")
+        product.setValue(name != nil ? name : "Product", forKey: "name")
         
         if productImageView.image != nil {
             let imageData = UIImageJPEGRepresentation(productImageView.image!, 1)
@@ -85,12 +92,18 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         publicData.saveRecord(product) { (record, error) -> Void in
             if error != nil {
                 print(error)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.loadingActivityIndicator.stopAnimating()
+                    self.loadingView.hidden = true
+                })
             }
             else {
                 print(record?.recordID.recordName)
                 self.addToPersonalDatabase()
                 self.newProduct = record
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.loadingActivityIndicator.stopAnimating()
+                    self.loadingView.hidden = true
                     self.performSegueWithIdentifier("addToInfoSegue", sender: self)
                 })
             }

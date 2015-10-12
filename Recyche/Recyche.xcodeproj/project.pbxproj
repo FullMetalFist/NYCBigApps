@@ -12,7 +12,7 @@
 		7CCEA0191BADB48A00F6D423 /* Recyche.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CCEA0171BADB48A00F6D423 /* Recyche.xcdatamodeld */; };
 		7CCEA01B1BADB48A00F6D423 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CCEA01A1BADB48A00F6D423 /* Assets.xcassets */; };
 		7CCEA01E1BADB48A00F6D423 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CCEA01C1BADB48A00F6D423 /* LaunchScreen.storyboard */; };
-		D32DACF01BE5F3F4AC707997 /* Pods_Recyche.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98569438C1359D2C195A1AD /* Pods_Recyche.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D32DACF01BE5F3F4AC707997 /* Pods_Recyche.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98569438C1359D2C195A1AD /* Pods_Recyche.framework */; };
 		FA0DC43D1BC31FDE00096FF8 /* Product+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DC43B1BC31FDE00096FF8 /* Product+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		FA0DC43E1BC31FDE00096FF8 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0DC43C1BC31FDE00096FF8 /* Product.swift */; settings = {ASSET_TAGS = (); }; };
 		FA1BAECB1BAF15C600D24788 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAECA1BAF15C600D24788 /* ScannerViewController.swift */; settings = {ASSET_TAGS = (); }; };

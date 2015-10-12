@@ -288,18 +288,37 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VkV-JP-Mps">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4oK-Ib-mra">
+                                        <rect key="frame" x="141" y="209" width="37" height="37"/>
+                                        <animations/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="4oK-Ib-mra" firstAttribute="centerY" secondItem="VkV-JP-Mps" secondAttribute="centerY" id="0vR-oD-0D9"/>
+                                    <constraint firstItem="4oK-Ib-mra" firstAttribute="centerX" secondItem="VkV-JP-Mps" secondAttribute="centerX" id="uvP-TQ-UgU"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.95294117649999999" green="0.96862745100000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="OjQ-ep-30t" firstAttribute="top" secondItem="dGU-GZ-DAV" secondAttribute="bottom" constant="8" id="1q7-0u-NTm"/>
+                            <constraint firstItem="EcO-Xq-l2E" firstAttribute="top" secondItem="VkV-JP-Mps" secondAttribute="bottom" id="5R0-8y-P2W"/>
                             <constraint firstItem="wWv-2C-ckN" firstAttribute="leading" secondItem="J8O-Xg-MZz" secondAttribute="leading" id="7Y1-71-Vck"/>
                             <constraint firstItem="x0U-Cl-ubv" firstAttribute="leading" secondItem="J8O-Xg-MZz" secondAttribute="leading" id="ANo-2k-xSz"/>
                             <constraint firstItem="dGU-GZ-DAV" firstAttribute="centerX" secondItem="J8O-Xg-MZz" secondAttribute="centerX" id="Au0-BX-6hH"/>
                             <constraint firstItem="EcO-Xq-l2E" firstAttribute="top" secondItem="rvy-Px-9VC" secondAttribute="bottom" constant="20" id="DrK-OS-sLq"/>
                             <constraint firstItem="wWv-2C-ckN" firstAttribute="top" secondItem="OjQ-ep-30t" secondAttribute="bottom" constant="8" id="GCu-PQ-4pr"/>
+                            <constraint firstItem="VkV-JP-Mps" firstAttribute="leading" secondItem="J8O-Xg-MZz" secondAttribute="leading" id="GWN-fg-bfh"/>
+                            <constraint firstItem="VkV-JP-Mps" firstAttribute="top" secondItem="GpT-td-mb9" secondAttribute="bottom" id="OcW-cZ-oeS"/>
                             <constraint firstItem="dGU-GZ-DAV" firstAttribute="top" secondItem="x0U-Cl-ubv" secondAttribute="bottom" constant="8" id="SHS-TJ-dh6"/>
                             <constraint firstItem="rvy-Px-9VC" firstAttribute="centerX" secondItem="J8O-Xg-MZz" secondAttribute="centerX" constant="1" id="XwX-hq-x0b"/>
+                            <constraint firstAttribute="trailing" secondItem="VkV-JP-Mps" secondAttribute="trailing" id="ZBB-si-fwY"/>
                             <constraint firstItem="OjQ-ep-30t" firstAttribute="leading" secondItem="J8O-Xg-MZz" secondAttribute="leading" constant="20" id="anb-Rz-qAa"/>
                             <constraint firstAttribute="trailing" secondItem="wWv-2C-ckN" secondAttribute="trailing" id="bDn-gk-cBE"/>
                             <constraint firstAttribute="trailing" secondItem="OjQ-ep-30t" secondAttribute="trailing" constant="20" id="bv9-Zm-bJN"/>
@@ -313,6 +332,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addProductToDatabaseButton" destination="rvy-Px-9VC" id="tnS-WP-SSj"/>
+                        <outlet property="loadingActivityIndicator" destination="4oK-Ib-mra" id="Q2B-K4-rNR"/>
+                        <outlet property="loadingView" destination="VkV-JP-Mps" id="Moe-th-J8I"/>
                         <outlet property="productImageView" destination="dGU-GZ-DAV" id="60t-Px-0W2"/>
                         <outlet property="productNameLabel" destination="OjQ-ep-30t" id="J4G-tC-DBC"/>
                         <outlet property="productPicker" destination="wWv-2C-ckN" id="oAr-1t-3dl"/>
@@ -356,10 +377,14 @@
                                     <action selector="segmentControlChanged:" destination="cET-ym-v4x" eventType="valueChanged" id="aV3-Gh-yJU"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h33-gl-gYW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h33-gl-gYW">
                                 <rect key="frame" x="108" y="373" width="106" height="30"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6Yg-aG-Q0R"/>
+                                    <constraint firstAttribute="width" constant="106" id="if3-mC-c8m"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                                 <state key="normal" title="Product List">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
