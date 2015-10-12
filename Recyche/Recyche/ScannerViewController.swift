@@ -27,6 +27,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     var barcodeScanned:((String) ->())?
     
+    @IBOutlet weak var instructionBanner: UILabel!
     
     private var allowedTypes = [AVMetadataObjectTypeUPCECode,
         AVMetadataObjectTypeCode39Code,
@@ -56,6 +57,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tabBarController?.tabBar.tintColor = UIColor.blackColor()
         // Do any additional setup after loading the view.
         self.captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         
@@ -87,7 +89,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer?.videoGravity = AVLayerVideoGravityResize
         videoPreviewLayer?.frame = videoView.layer.bounds
-        videoView.layer.addSublayer(videoPreviewLayer!)
+        videoView.layer.insertSublayer(videoPreviewLayer!, below: instructionBanner.layer)
         videoView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "restartScanner"))
         
         captureSession?.startRunning()

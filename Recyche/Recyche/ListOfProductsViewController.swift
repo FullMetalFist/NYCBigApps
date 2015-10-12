@@ -43,12 +43,13 @@ class ListOfProductsViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell", forIndexPath: indexPath) as! ProductTableViewCell
         
         let product = products[indexPath.row]
         
-        cell.textLabel?.text = product.name
-        cell.detailTextLabel?.text = "\(product.dateadded!)"
+        cell.nameLabel.text = product.name
+        cell.materialLabel.text = product.material
+        cell.dateLabel.text = "\(product.dateadded!)"
         
         return cell
     }

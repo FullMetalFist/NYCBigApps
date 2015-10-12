@@ -18,10 +18,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productPicker: UIPickerView!
     @IBOutlet weak var addProductToDatabaseButton: UIButton!
-    @IBOutlet weak var productNameTextField: UITextField!
-    @IBOutlet weak var addImageButton: UIButton!
-    @IBOutlet weak var loadingView: UIView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
     
     var scannedUPC: String!
     var material: String!
@@ -31,37 +28,34 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         super.viewWillAppear(animated)
         
         addProductToDatabaseButton.enabled = false
+        addProductToDatabaseButton.alpha = 0.3
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadingView.hidden = false
-        activityIndicator.hidden = false
-        activityIndicator.startAnimating()
-        
         Alamofire.request(.GET, URLString, parameters: ["access_token" : access_token ,"upc": scannedUPC]).responseJSON { response in
-            
-            self.activityIndicator.stopAnimating()
-            self.activityIndicator.hidden = true
-            self.loadingView.hidden = true
             
             if let data = response.data {
                 let json = JSON(data: data)
-                
+
                 if let name = json["0"]["productname"].string, let imageURL = json["0"]["imageurl"].string {
-                    self.productNameLabel.text = name
+                    if name == " " {
+                        self.productNameLabel.text = "No product found!\nPlease choose the appropriate recycling code and save it in our database for future reference."
+                        self.productImageView.image = UIImage(named: "NoImage")
+                    }
+                    else {
+                        self.productNameLabel.text = name
+                    }
+                    
                     
                     if self.verifyUrl(imageURL) {
                         self.productImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: imageURL)!)!)
                     }
                 }
                 else {
-                    self.productNameLabel.text = "Add Product Name"
-                    if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-                        self.addImageButton.enabled = true
-                    }
-                    self.productNameTextField.enabled = true
+                    self.productNameLabel.text = "No product found!\nPlease choose the appropriate recycling code and save it in our database for future reference."
+                    self.productImageView.image = UIImage(named: "NoImage")
                 }
             }
         }
@@ -70,15 +64,10 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     
     @IBAction func addProductToDatabase(sender: AnyObject) {
         
-        loadingView.hidden = false
-        activityIndicator.hidden = false
-        activityIndicator.startAnimating()
-        
         let container = CKContainer.defaultContainer()
         let publicData = container.publicCloudDatabase
         
         let product = CKRecord(recordType: "Product", recordID: CKRecordID(recordName: scannedUPC))
-        product.setValue(productNameLabel.text! == "Add Product Name" ? productNameTextField.text! : productNameLabel.text!, forKey: "name")
         product.setValue(material, forKey: "material")
         product.setValue(1, forKey: "numberOfScans")
         
@@ -93,11 +82,6 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         }
         
         publicData.saveRecord(product) { (record, error) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.activityIndicator.stopAnimating()
-                self.loadingView.hidden = true
-            })
-            
             if error != nil {
                 print(error)
             }
@@ -116,7 +100,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     func addToPersonalDatabase() {
         let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
         
-        Product.createInManagedObjectContext(managedObjectContext, _name: productNameLabel.text! == "Add Product Name" ? productNameTextField.text! : productNameLabel.text!, _material: material, _date: NSDate())
+        Product.createInManagedObjectContext(managedObjectContext, _name: productNameLabel.text!, _material: material, _date: NSDate())
         
         do {
             try managedObjectContext.save()
@@ -164,6 +148,9 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Arial", size: 14.0)!,NSForegroundColorAttributeName:UIColor.blackColor()])
         pickerLabel.attributedText = myTitle
         pickerLabel.textAlignment = .Center
+        pickerLabel.backgroundColor = colorForCode(titleData)
+        
+        
         return pickerLabel
     }
     
@@ -171,8 +158,13 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         
         material = recycleCodes[row]
         
-        if !addProductToDatabaseButton.enabled {
+        if !addProductToDatabaseButton.enabled && row != 0 {
             addProductToDatabaseButton.enabled = true
+            addProductToDatabaseButton.alpha = 1
+        }
+        else if addProductToDatabaseButton.enabled && row == 0 {
+            addProductToDatabaseButton.enabled = false
+            addProductToDatabaseButton.alpha = 0.3
         }
     }
     
@@ -182,9 +174,47 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         productImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        productNameTextField.resignFirstResponder()
-        return true
+    func colorForCode(code: String) -> UIColor {
+        switch code {
+        case _ where code == "PETE", "HDPE", "PVC", "LDPE", "PP", "PS":
+            return colorWithHexString("88D5EC")
+        case _ where code == "SHELF-STABLE CARTON", "REFRIGERATED CARTON":
+            return colorWithHexString("7EA0D2")
+        case _ where code == "GLASS GREEN", "GLASS CLEAR", "GLASS BROWN":
+            return colorWithHexString("CFDE4E")
+        case _ where code == "PAPER", "PAPER BACK BOOK", "NEWSPRINT":
+            return colorWithHexString("D8914F")
+        case _ where code == "CARDBOARD":
+            return colorWithHexString("D8914F")
+        case _ where code == "ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS":
+            return colorWithHexString("E486B7")
+        default:
+            return colorWithHexString("F3F7DE")
+        }
+    }
+    
+    func colorWithHexString (hex:String) -> UIColor {
+        var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
+        
+        if (cString.hasPrefix("#")) {
+            cString = (cString as NSString).substringFromIndex(1)
+        }
+        
+        if (cString.characters.count != 6) {
+            return UIColor.grayColor()
+        }
+        
+        let rString = (cString as NSString).substringToIndex(2)
+        let gString = ((cString as NSString).substringFromIndex(2) as NSString).substringToIndex(2)
+        let bString = ((cString as NSString).substringFromIndex(4) as NSString).substringToIndex(2)
+        
+        var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
+        NSScanner(string: rString).scanHexInt(&r)
+        NSScanner(string: gString).scanHexInt(&g)
+        NSScanner(string: bString).scanHexInt(&b)
+        
+        
+        return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
     }
     
     func verifyUrl (urlString: String?) -> Bool {

@@ -31,13 +31,13 @@ class ProductInfoViewController: UIViewController {
         for code in recycleCodes {
             if code == scannedProduct.valueForKey("material") as! String {
                 switch code {
-                case _ where code == "PETE SPI CODE: 1", "HDPE SPI CODE: 2", "PVC SPI CODE: 3", "LDPE SPI CODE: 4", "PP SPI CODE: 5", "PS SPI CODE: 6":
+                case _ where code == "PETE", "HDPE", "PVC", "LDPE", "PP", "PS":
                     recycleInstructionsLabel.text! = recycleCodesInfo["plastic"]!
                 case _ where code == "SHELF-STABLE CARTON", "REFRIGERATED CARTON":
                     recycleInstructionsLabel.text! = recycleCodesInfo["carton"]!
                 case _ where code == "GLASS GREEN", "GLASS CLEAR", "GLASS BROWN":
                     recycleInstructionsLabel.text! = recycleCodesInfo["glass"]!
-                case _ where code == "PAPER":
+                case _ where code == "PAPER", "PAPER BACK BOOK", "NEWSPRINT":
                     recycleInstructionsLabel.text! = recycleCodesInfo["paper"]!
                 case _ where code == "CARDBOARD":
                     recycleInstructionsLabel.text! = recycleCodesInfo["cardbord"]!

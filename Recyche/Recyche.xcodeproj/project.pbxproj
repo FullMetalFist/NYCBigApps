@@ -22,6 +22,7 @@
 		FA1BAED51BAF164B00D24788 /* ListOfProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED41BAF164B00D24788 /* ListOfProductsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		FABC01001BC6D7C500B3048A /* rcyinfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = FABC00FF1BC6D7C500B3048A /* rcyinfo.txt */; settings = {ASSET_TAGS = (); }; };
 		FABC01021BC6DE0800B3048A /* RecycleInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABC01011BC6DE0800B3048A /* RecycleInformation.swift */; settings = {ASSET_TAGS = (); }; };
+		FABD2D821BCB37AB003C5464 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABD2D811BCB37AA003C5464 /* ProductTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		FAC023691BBFA9CA0049C6C2 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC023681BBFA9CA0049C6C2 /* CloudKit.framework */; };
 		FAE29D851BBB6412003325DA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE29D841BBB6412003325DA /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		FA4184BA1BBED5EE00F70AA2 /* Recyche.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Recyche.entitlements; sourceTree = "<group>"; };
 		FABC00FF1BC6D7C500B3048A /* rcyinfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rcyinfo.txt; sourceTree = "<group>"; };
 		FABC01011BC6DE0800B3048A /* RecycleInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecycleInformation.swift; sourceTree = "<group>"; };
+		FABD2D811BCB37AA003C5464 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		FAC023681BBFA9CA0049C6C2 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		FAE29D841BBB6412003325DA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +120,7 @@
 			children = (
 				FA1BAEC91BAF15B200D24788 /* View Controllers */,
 				FABC01031BC6EC1400B3048A /* Private Database - CoreData */,
+				FABD2D811BCB37AA003C5464 /* ProductTableViewCell.swift */,
 				7CCEA0101BADB48A00F6D423 /* AppDelegate.swift */,
 				7CCEA0141BADB48A00F6D423 /* Main.storyboard */,
 				7CCEA01A1BADB48A00F6D423 /* Assets.xcassets */,
@@ -287,6 +290,7 @@
 				FA0DC43D1BC31FDE00096FF8 /* Product+CoreDataProperties.swift in Sources */,
 				FABC01021BC6DE0800B3048A /* RecycleInformation.swift in Sources */,
 				FA1BAECF1BAF160600D24788 /* AddProductViewController.swift in Sources */,
+				FABD2D821BCB37AB003C5464 /* ProductTableViewCell.swift in Sources */,
 				FA0DC43E1BC31FDE00096FF8 /* Product.swift in Sources */,
 				FA1BAED51BAF164B00D24788 /* ListOfProductsViewController.swift in Sources */,
 				7CCEA0191BADB48A00F6D423 /* Recyche.xcdatamodeld in Sources */,
