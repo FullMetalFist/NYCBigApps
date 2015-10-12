@@ -51,15 +51,15 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         {
             // Need some error notification
         }
-        
-        if captureSession != nil {
-            restartScanner()
-        }
 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if captureSession != nil {
+            restartScanner()
+        }
         
         let addProductViewController = AddProductViewController()
         tabBarController?.tabBar.tintColor = addProductViewController.colorWithHexString("15783D")
@@ -83,7 +83,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         captureSession = AVCaptureSession()
         captureSession?.addInput(input as! AVCaptureInput)
-        
         
         let captureMetadataOutput = AVCaptureMetadataOutput()
         captureSession?.addOutput(captureMetadataOutput)
@@ -151,22 +150,27 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         let publicData = container.publicCloudDatabase
         
         publicData.fetchRecordWithID(CKRecordID(recordName: upc)) { (record, error) -> Void in
-            if error == nil && record != nil {
-                if (record?.valueForKey("numberOfScans") as! Int) < 3 {
+            if error != nil {
+                if error!.userInfo["ServerErrorDescription"]! as! String == "Record not found" {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.performSegueWithIdentifier("toAddProductSegue", sender: self)
                     })
                 }
-                self.scannedProduct = record
-                print(record!.recordID.recordName)
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.performSegueWithIdentifier("toProductInfoSegue", sender: self)
-                })
+                else {
+                    print(error!)
+                }
+                
+            }
+            else if record != nil {
+                if let rec = record {
+                    self.scannedProduct = rec
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.performSegueWithIdentifier("toProductInfoSegue", sender: self)
+                    })
+                }
             }
             else {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.performSegueWithIdentifier("toAddProductSegue", sender: self)
-                })
+                print("Wierd Situation")
             }
         }
     }
