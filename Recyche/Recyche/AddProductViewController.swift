@@ -21,7 +21,6 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
 
-    
     var scannedUPC: String!
     var material: String!
     var newProduct: CKRecord!
@@ -38,34 +37,8 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Alamofire.request(.GET, URLString, parameters: ["access_token" : access_token ,"upc": scannedUPC]).responseJSON { response in
-            
-            if let data = response.data {
-                let json = JSON(data: data)
-
-                if let _name = json["0"]["productname"].string, let imageURL = json["0"]["imageurl"].string {
-                    if _name == " " {
-                        self.productNameLabel.text = "No product found!\nPlease choose the appropriate recycling code and save it in our database for future reference."
-                        self.productImageView.image = UIImage(named: "NoImage")
-                    }
-                    else {
-                        self.productNameLabel.text = _name
-                        self.name = _name
-                    }
-                    
-                    
-                    if self.verifyUrl(imageURL) {
-                        self.productImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: imageURL)!)!)
-                    }
-                }
-                else {
-                    self.productNameLabel.text = "No product found!\nPlease choose the appropriate recycling code and save it in our database for future reference."
-                    self.productImageView.image = UIImage(named: "NoImage")
-                }
-            }
-        }
+        checkUPCCodesApiForMatchingCode()
     }
-    
     
     @IBAction func addProductToDatabase(sender: AnyObject) {
         
@@ -136,6 +109,56 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
             print("No Camera available!")
         }
                 
+    }
+    
+    func checkUPCCodesApiForMatchingCode() {
+        Alamofire.request(.GET, URLString, parameters: ["access_token" : access_token ,"upc": scannedUPC]).responseJSON { response in
+            
+            if let data = response.data {
+                let json = JSON(data: data)
+                print(json)
+                if let name = json["0"]["productname"].string, let imageURL = json["0"]["imageurl"].string {
+                    print(name)
+                    if name == " " {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.productNameLabel.removeFromSuperview()
+                        })
+                    }
+                    else {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.productNameLabel.text = name
+                        })
+                    }
+                }
+                else {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.productNameLabel.removeFromSuperview()
+                        self.productImageView.removeFromSuperview()
+                    })
+                }
+//                if let _name = json["0"]["productname"].string, let imageURL = json["0"]["imageurl"].string {
+//                    if _name == " " {
+//                        self.productNameLabel.text = "No product found!\nPlease choose the appropriate recycling code and save it in our database for future reference."
+//                        self.productImageView.image = UIImage(named: "NoImage")
+//                    }
+//                    else {
+//                        self.productNameLabel.text = _name
+//                        self.name = _name
+//                    }
+//                    
+//                    
+//                    if self.verifyUrl(imageURL) {
+//                        self.productImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: imageURL)!)!)
+//                    }
+//                }
+//                else {
+//                    self.productNameLabel.text = "No product found!\nPlease choose the appropriate recycling code and save it in our database for future reference."
+//                    self.productImageView.image = UIImage(named: "NoImage")
+//                }
+            }
+            
+        }
+
     }
     
     override func didReceiveMemoryWarning() {
