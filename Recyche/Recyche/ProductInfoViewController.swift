@@ -28,10 +28,11 @@ class ProductInfoViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        print(scannedProduct)
         for code in recycleCodes {
             if code == scannedProduct.valueForKey("material") as! String {
                 switch code {
-                case _ where code == "PETE", "HDPE", "PVC", "LDPE", "PP", "PS":
+                case _ where code == "PETE 1", "HDPE 2", "PVC 3", "LDPE 4", "PP 5", "PS 6":
                     recycleInstructionsLabel.text! = recycleCodesInfo["plastic"]!
                 case _ where code == "SHELF-STABLE CARTON", "REFRIGERATED CARTON":
                     recycleInstructionsLabel.text! = recycleCodesInfo["carton"]!

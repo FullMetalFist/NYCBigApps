@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class ListOfProductsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -16,16 +15,6 @@ class ListOfProductsViewController: UIViewController, UITableViewDataSource, UIT
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-        
-        let fetchRequest = NSFetchRequest(entityName: "Product")
-        
-        do {
-            products = try managedObjectContext.executeFetchRequest(fetchRequest) as! [Product]
-        }
-        catch {
-            print("Error at fetch?")
-        }
     }
     
     override func viewDidLoad() {

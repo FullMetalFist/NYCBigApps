@@ -70,6 +70,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         let product = CKRecord(recordType: "Product", recordID: CKRecordID(recordName: scannedUPC))
         product.setValue(material, forKey: "material")
         product.setValue(1, forKey: "numberOfScans")
+        product.setValue("Product", forKey: "name")
         
         if productImageView.image != nil {
             let imageData = UIImageJPEGRepresentation(productImageView.image!, 1)
@@ -176,17 +177,17 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     
     func colorForCode(code: String) -> UIColor {
         switch code {
-        case _ where code == "PETE", "HDPE", "PVC", "LDPE", "PP", "PS":
+        case _ where code == "PETE 1", "HDPE 2", "PVC 3", "LDPE 4", "PP 5", "PS 6", "PLASTIC":
             return colorWithHexString("88D5EC")
-        case _ where code == "SHELF-STABLE CARTON", "REFRIGERATED CARTON":
+        case _ where code == "SHELF-STABLE CARTON", "REFRIGERATED CARTON", "CARTON":
             return colorWithHexString("7EA0D2")
-        case _ where code == "GLASS GREEN", "GLASS CLEAR", "GLASS BROWN":
+        case _ where code == "GLASS GREEN", "GLASS CLEAR", "GLASS BROWN", "GLASS":
             return colorWithHexString("CFDE4E")
         case _ where code == "PAPER", "PAPER BACK BOOK", "NEWSPRINT":
             return colorWithHexString("D8914F")
         case _ where code == "CARDBOARD":
             return colorWithHexString("D8914F")
-        case _ where code == "ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS":
+        case _ where code == "ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS", "METAL":
             return colorWithHexString("E486B7")
         default:
             return colorWithHexString("F3F7DE")

@@ -51,13 +51,18 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         {
             // Need some error notification
         }
+        
+        if captureSession != nil {
+            restartScanner()
+        }
 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBarController?.tabBar.tintColor = UIColor.blackColor()
+        let addProductViewController = AddProductViewController()
+        tabBarController?.tabBar.tintColor = addProductViewController.colorWithHexString("15783D")
         // Do any additional setup after loading the view.
         self.captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         
@@ -147,19 +152,21 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         publicData.fetchRecordWithID(CKRecordID(recordName: upc)) { (record, error) -> Void in
             if error == nil && record != nil {
+                if (record?.valueForKey("numberOfScans") as! Int) < 3 {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.performSegueWithIdentifier("toAddProductSegue", sender: self)
+                    })
+                }
                 self.scannedProduct = record
                 print(record!.recordID.recordName)
-                print("is in")
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.performSegueWithIdentifier("toProductInfoSegue", sender: self)
                 })
             }
             else {
-                print("add")
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.performSegueWithIdentifier("toAddProductSegue", sender: self)
                 })
-                print(error?.userInfo)
             }
         }
     }
