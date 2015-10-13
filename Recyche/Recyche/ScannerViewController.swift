@@ -39,6 +39,14 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         AVMetadataObjectTypePDF417Code,
         AVMetadataObjectTypeAztecCode]
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if captureSession != nil {
+            restartScanner()
+        }
+    }
+    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -57,9 +65,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if captureSession != nil {
-            restartScanner()
-        }
         
         let addProductViewController = AddProductViewController()
         tabBarController?.tabBar.tintColor = addProductViewController.colorWithHexString("15783D")

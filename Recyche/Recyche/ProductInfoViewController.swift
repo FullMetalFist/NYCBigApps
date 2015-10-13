@@ -54,6 +54,9 @@ class ProductInfoViewController: UIViewController {
         if let name = scannedProduct.valueForKey("name") as? String {
             productNameLabel.text = name
         }
+        else {
+            productNameLabel.text = "Product name not available!"
+        }
         
         let numberOfScans = scannedProduct.valueForKey("numberOfScans") as? Int
         numberOfScansLabel.text = "This product has been recycled \(numberOfScans!) times."
@@ -64,8 +67,11 @@ class ProductInfoViewController: UIViewController {
             let imageAsset = scannedProduct.valueForKey("image") as! CKAsset
             productImageView.image = UIImage(contentsOfFile: imageAsset.fileURL.path!)
         }
+        else {
+            productImageView.image = UIImage(named: "NoImage")
+        }
         
-        updateProduct()
+//        updateProduct()
         
     }
     
@@ -73,6 +79,7 @@ class ProductInfoViewController: UIViewController {
         super.viewDidLoad()
         
     }
+    
     @IBAction func toScanner(sender: AnyObject) {
         navigationController?.popToRootViewControllerAnimated(true)
     }

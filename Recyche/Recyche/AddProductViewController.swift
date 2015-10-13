@@ -24,7 +24,8 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     var scannedUPC: String!
     var material: String!
     var newProduct: CKRecord!
-    var name: String!
+    var name: String?
+    var imageURL: String?
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -50,9 +51,11 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         let product = CKRecord(recordType: "Product", recordID: CKRecordID(recordName: scannedUPC))
         product.setValue(material, forKey: "material")
         product.setValue(1, forKey: "numberOfScans")
-        product.setValue(name != nil ? name : "Product", forKey: "name")
+        if let nm = name {
+           product.setValue(nm, forKey: "name")
+        }
         
-        if productImageView.image != nil {
+        if let _ = imageURL {
             let imageData = UIImageJPEGRepresentation(productImageView.image!, 1)
             let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
             let fileURL = documentsURL.URLByAppendingPathComponent("imageasset")
@@ -61,6 +64,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
             let asset = CKAsset(fileURL: fileURL)
             product.setValue(asset, forKey: "image")
         }
+        
         
         publicData.saveRecord(product) { (record, error) -> Void in
             if error != nil {
@@ -97,44 +101,33 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         }
     }
     
-    @IBAction func addImage(sender: AnyObject) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        
-        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-            imagePicker.sourceType = .Camera
-            presentViewController(imagePicker, animated: true, completion: nil)
-        }
-        else {
-            print("No Camera available!")
-        }
-                
-    }
-    
     func checkUPCCodesApiForMatchingCode() {
         Alamofire.request(.GET, URLString, parameters: ["access_token" : access_token ,"upc": scannedUPC]).responseJSON { response in
             
             if let data = response.data {
                 let json = JSON(data: data)
                 print(json)
-                if let name = json["0"]["productname"].string, let imageURL = json["0"]["imageurl"].string {
-                    print(name)
-                    if name == " " {
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.productNameLabel.removeFromSuperview()
-                        })
+                if let _name = json["0"]["productname"].string, let _imageURL = json["0"]["imageurl"].string {
+                    print(_name)
+                    if _name == " " {
+                        self.productNameLabel.text = "No Product Name Provided"
                     }
                     else {
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.productNameLabel.text = name
-                        })
+                        print(_name)
+                        self.productNameLabel.text = _name
+                        self.name = _name
+                    }
+                    print(_imageURL)
+                    if _imageURL == "N'\'/A" {
+                        print("yes, it's naaaaaa")
+                    }
+                    else {
+                        self.productImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: _imageURL)!)!)
+                        self.imageURL = _imageURL
                     }
                 }
                 else {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.productNameLabel.removeFromSuperview()
-                        self.productImageView.removeFromSuperview()
-                    })
+                    self.productNameLabel.text = "No Product Name Provided"
                 }
 //                if let _name = json["0"]["productname"].string, let imageURL = json["0"]["imageurl"].string {
 //                    if _name == " " {
