@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -223,62 +224,74 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" verticalHuggingPriority="247" verticalCompressionResistancePriority="760" translatesAutoresizingMaskIntoConstraints="NO" id="wWv-2C-ckN">
-                                <rect key="frame" x="0.0" y="242" width="320" height="155"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6W3-gN-Di2">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="435"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLEASE, ADD PRODUCT TO RECYCHE DATABASE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0U-Cl-ubv">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="wAH-T6-GMZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoImage" translatesAutoresizingMaskIntoConstraints="NO" id="dGU-GZ-DAV">
+                                        <rect key="frame" x="80" y="45" width="160" height="160"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.95294117649999999" green="0.96862745100000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="160" id="5Ci-nW-rcb"/>
+                                            <constraint firstAttribute="height" constant="160" id="stX-iC-KQw"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Product Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjQ-ep-30t">
+                                        <rect key="frame" x="0.0" y="214" width="320" height="17"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" verticalHuggingPriority="247" verticalCompressionResistancePriority="760" translatesAutoresizingMaskIntoConstraints="NO" id="wWv-2C-ckN">
+                                        <rect key="frame" x="0.0" y="241" width="320" height="155"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.95294117649999999" green="0.96862745100000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="wWv-2C-ckN" secondAttribute="height" multiplier="64:31" id="yww-zs-ZD7"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dataSource" destination="LNm-kN-zp5" id="jYy-7S-6e9"/>
+                                            <outlet property="delegate" destination="LNm-kN-zp5" id="fe3-3H-Yn4"/>
+                                        </connections>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvy-Px-9VC">
+                                        <rect key="frame" x="60" y="405" width="200" height="30"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="iEj-f2-FrM"/>
+                                            <constraint firstAttribute="height" constant="30" id="kjE-In-4R3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
+                                        <state key="normal" title="Add Product To Database">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addProductToDatabase:" destination="LNm-kN-zp5" eventType="touchUpInside" id="Vfh-o3-eQf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <animations/>
-                                <color key="backgroundColor" red="0.95294117649999999" green="0.96862745100000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="wWv-2C-ckN" secondAttribute="height" multiplier="64:31" id="yww-zs-ZD7"/>
+                                    <constraint firstItem="OjQ-ep-30t" firstAttribute="leading" secondItem="6W3-gN-Di2" secondAttribute="leadingMargin" id="0mp-6D-7mX"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="OjQ-ep-30t" secondAttribute="trailing" id="Fsx-8K-mEx"/>
+                                    <constraint firstItem="x0U-Cl-ubv" firstAttribute="leading" secondItem="6W3-gN-Di2" secondAttribute="leadingMargin" id="YQz-7G-h5g"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="x0U-Cl-ubv" secondAttribute="trailing" id="fdy-Y0-h7d"/>
                                 </constraints>
-                                <connections>
-                                    <outlet property="dataSource" destination="LNm-kN-zp5" id="jYy-7S-6e9"/>
-                                    <outlet property="delegate" destination="LNm-kN-zp5" id="fe3-3H-Yn4"/>
-                                </connections>
-                            </pickerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoImage" translatesAutoresizingMaskIntoConstraints="NO" id="dGU-GZ-DAV">
-                                <rect key="frame" x="80" y="44" width="160" height="160"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.95294117649999999" green="0.96862745100000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="5Ci-nW-rcb"/>
-                                    <constraint firstAttribute="height" constant="160" id="stX-iC-KQw"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvy-Px-9VC">
-                                <rect key="frame" x="61" y="405" width="200" height="30"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="iEj-f2-FrM"/>
-                                    <constraint firstAttribute="height" constant="30" id="kjE-In-4R3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
-                                <state key="normal" title="Add Product To Database">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="addProductToDatabase:" destination="LNm-kN-zp5" eventType="touchUpInside" id="Vfh-o3-eQf"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Product Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjQ-ep-30t">
-                                <rect key="frame" x="20" y="212" width="280" height="22"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLEASE, ADD PRODUCT TO RECYCHE DATABASE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0U-Cl-ubv">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="wAH-T6-GMZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </stackView>
                             <view alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VkV-JP-Mps">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <subviews>
@@ -298,24 +311,14 @@
                         <animations/>
                         <color key="backgroundColor" red="0.95294117649999999" green="0.96862745100000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="OjQ-ep-30t" firstAttribute="top" secondItem="dGU-GZ-DAV" secondAttribute="bottom" constant="8" id="1q7-0u-NTm"/>
                             <constraint firstItem="EcO-Xq-l2E" firstAttribute="top" secondItem="VkV-JP-Mps" secondAttribute="bottom" id="5R0-8y-P2W"/>
-                            <constraint firstItem="wWv-2C-ckN" firstAttribute="leading" secondItem="J8O-Xg-MZz" secondAttribute="leading" id="7Y1-71-Vck"/>
-                            <constraint firstItem="x0U-Cl-ubv" firstAttribute="leading" secondItem="J8O-Xg-MZz" secondAttribute="leading" id="ANo-2k-xSz"/>
-                            <constraint firstItem="dGU-GZ-DAV" firstAttribute="centerX" secondItem="J8O-Xg-MZz" secondAttribute="centerX" id="Au0-BX-6hH"/>
-                            <constraint firstItem="EcO-Xq-l2E" firstAttribute="top" secondItem="rvy-Px-9VC" secondAttribute="bottom" constant="20" id="DrK-OS-sLq"/>
-                            <constraint firstItem="wWv-2C-ckN" firstAttribute="top" secondItem="OjQ-ep-30t" secondAttribute="bottom" constant="8" id="GCu-PQ-4pr"/>
+                            <constraint firstAttribute="bottom" secondItem="6W3-gN-Di2" secondAttribute="bottom" constant="20" id="BRP-cV-uyU"/>
+                            <constraint firstItem="6W3-gN-Di2" firstAttribute="top" secondItem="GpT-td-mb9" secondAttribute="bottom" id="ERU-eb-hH9"/>
                             <constraint firstItem="VkV-JP-Mps" firstAttribute="leading" secondItem="J8O-Xg-MZz" secondAttribute="leading" id="GWN-fg-bfh"/>
                             <constraint firstItem="VkV-JP-Mps" firstAttribute="top" secondItem="GpT-td-mb9" secondAttribute="bottom" id="OcW-cZ-oeS"/>
-                            <constraint firstItem="dGU-GZ-DAV" firstAttribute="top" secondItem="x0U-Cl-ubv" secondAttribute="bottom" constant="8" id="SHS-TJ-dh6"/>
-                            <constraint firstItem="rvy-Px-9VC" firstAttribute="centerX" secondItem="J8O-Xg-MZz" secondAttribute="centerX" constant="1" id="XwX-hq-x0b"/>
                             <constraint firstAttribute="trailing" secondItem="VkV-JP-Mps" secondAttribute="trailing" id="ZBB-si-fwY"/>
-                            <constraint firstItem="OjQ-ep-30t" firstAttribute="leading" secondItem="J8O-Xg-MZz" secondAttribute="leading" constant="20" id="anb-Rz-qAa"/>
-                            <constraint firstAttribute="trailing" secondItem="wWv-2C-ckN" secondAttribute="trailing" id="bDn-gk-cBE"/>
-                            <constraint firstAttribute="trailing" secondItem="OjQ-ep-30t" secondAttribute="trailing" constant="20" id="bv9-Zm-bJN"/>
-                            <constraint firstItem="rvy-Px-9VC" firstAttribute="top" secondItem="wWv-2C-ckN" secondAttribute="bottom" constant="8.5" id="hWW-K0-2oF"/>
-                            <constraint firstItem="x0U-Cl-ubv" firstAttribute="top" secondItem="GpT-td-mb9" secondAttribute="bottom" id="jG4-n5-wLt"/>
-                            <constraint firstAttribute="trailing" secondItem="x0U-Cl-ubv" secondAttribute="trailing" id="yFh-Eq-808"/>
+                            <constraint firstItem="6W3-gN-Di2" firstAttribute="leading" secondItem="J8O-Xg-MZz" secondAttribute="leading" id="k34-zS-d7o"/>
+                            <constraint firstAttribute="trailing" secondItem="6W3-gN-Di2" secondAttribute="trailing" id="tJd-Fg-cOx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add A New Product" id="R05-Bu-UDh">
