@@ -21,6 +21,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
 
+    let naMessage = "The Product information is not in our database. Please 'SELECT PRODUCT MATERIAL' below and add it."
     var scannedUPC: String!
     var material: String!
     var newProduct: CKRecord!
@@ -32,7 +33,8 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         
         addProductToDatabaseButton.enabled = false
         addProductToDatabaseButton.alpha = 0.3
-        loadingView.hidden = true
+//        loadingView.hidden = true
+        loadingActivityIndicator.startAnimating()
     }
     
     override func viewDidLoad() {
@@ -107,28 +109,30 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
             if let data = response.data {
                 let json = JSON(data: data)
                 print(json)
-                if let _name = json["0"]["productname"].string, let _imageURL = json["0"]["imageurl"].string {
+                if let _name = json["0"]["productname"].string/*, */ {
                     print(_name)
                     if _name == " " {
-                        self.productNameLabel.text = "No Product Name Provided"
+                        self.productNameLabel.text = self.naMessage
                     }
                     else {
                         print(_name)
                         self.productNameLabel.text = _name
                         self.name = _name
                     }
-                    print(_imageURL)
-                    if _imageURL == "N'\'/A" {
-                        print("yes, it's naaaaaa")
-                    }
-                    else {
+                    
+                }
+                else {
+                    self.productNameLabel.text = self.naMessage
+                }
+                
+                if let _imageURL = json["0"]["imageurl"].string {
+                    if self.verifyUrl(_imageURL) {
                         self.productImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: _imageURL)!)!)
                         self.imageURL = _imageURL
                     }
                 }
-                else {
-                    self.productNameLabel.text = "No Product Name Provided"
-                }
+                self.loadingActivityIndicator.stopAnimating()
+                self.loadingView.hidden = true
 //                if let _name = json["0"]["productname"].string, let imageURL = json["0"]["imageurl"].string {
 //                    if _name == " " {
 //                        self.productNameLabel.text = "No product found!\nPlease choose the appropriate recycling code and save it in our database for future reference."

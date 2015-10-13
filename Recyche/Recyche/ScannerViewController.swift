@@ -145,7 +145,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     }
     
     @IBAction func toAddProduct(sender: AnyObject) {
-        lastCapturedCode = "\(arc4random_uniform(692304723))"
+//        lastCapturedCode = "\(arc4random_uniform(692304723))"
+        lastCapturedCode = "0049000011340"
         databaseCheck(lastCapturedCode!)
     }
     
