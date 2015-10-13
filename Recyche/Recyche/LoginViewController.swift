@@ -10,9 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
-    
-{
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +28,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)
-    {
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         if let granted = result.grantedPermissions {
+            print("halooo")
             print(granted)
         }
         else if let declined = result.declinedPermissions {
@@ -42,31 +39,33 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
         else if result.isCancelled {
             print(result.isCancelled)
         }
-        if error == nil
-        {
+        if error == nil {
             print("Login complete.")
             self.performSegueWithIdentifier("unwindLoginSegue", sender: self)
         }
-        else
-        {
-            print(error.localizedDescription)
+        else {
+            print("halo")
+            print(error)
         }
     }
     
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!)
-    {
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("User logged out...")
     }
     
-    /*
+    
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
+//     In a storyboard-based application, you will often want to do a little preparation before navigation
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "unwindLoginSegue" {
+//            let scannerViewController = segue.destinationViewController as! ScannerViewController
+//            scannerViewController.appStart = true
+//        }
+//     Get the new view controller using segue.destinationViewController.
+//     Pass the selected object to the new view controller.
+//    }
+    
     
 }
 

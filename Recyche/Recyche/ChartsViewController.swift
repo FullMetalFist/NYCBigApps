@@ -61,9 +61,7 @@ class ChartsViewController: UIViewController {
         var colors: [UIColor] = []
         
         for code in dataPoints {
-            let addVC = AddProductViewController()
-            
-            colors.append(addVC.colorForCode(code))
+            colors.append(colorForCode(code))
         }
         
         pieChartDataSet.colors = colors
@@ -126,26 +124,7 @@ class ChartsViewController: UIViewController {
 
     }
     
-    func materialForCode(code: String) -> String {
-        switch code {
-        case _ where code == "PETE 1", "HDPE 2", "PVC 3", "LDPE 4", "PP 5", "PS 6":
-            return "PLASTIC"
-        case _ where code == "SHELF-STABLE CARTON", "REFRIGERATED CARTON":
-            return "CARTON"
-        case _ where code == "GLASS GREEN", "GLASS CLEAR", "GLASS BROWN":
-            return "GLASS"
-        case _ where code == "PAPER", "PAPER BACK BOOK", "NEWSPRINT":
-            return "PAPER"
-        case _ where code == "CARDBOARD":
-            return "CARDBOARD"
-        case _ where code == "ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS":
-            return "METAL"
-        default:
-            return "SOMETHING"
-        }
-
-    }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -21,46 +21,34 @@ class ProductInfoViewController: UIViewController {
     
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
-    @IBOutlet weak var numberOfScansLabel: UILabel!
+    @IBOutlet weak var productNameDetail: UILabel!
     @IBOutlet weak var materialLabel: UILabel!
+    @IBOutlet weak var materialDetailLabel: UILabel!
     @IBOutlet weak var recycleInstructionsLabel: UILabel!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        print(scannedProduct)
         for code in recycleCodes {
             if code == scannedProduct.valueForKey("material") as! String {
-                switch code {
-                case _ where code == "PETE 1", "HDPE 2", "PVC 3", "LDPE 4", "PP 5", "PS 6":
-                    recycleInstructionsLabel.text! = recycleCodesInfo["plastic"]!
-                case _ where code == "SHELF-STABLE CARTON", "REFRIGERATED CARTON":
-                    recycleInstructionsLabel.text! = recycleCodesInfo["carton"]!
-                case _ where code == "GLASS GREEN", "GLASS CLEAR", "GLASS BROWN":
-                    recycleInstructionsLabel.text! = recycleCodesInfo["glass"]!
-                case _ where code == "PAPER", "PAPER BACK BOOK", "NEWSPRINT":
-                    recycleInstructionsLabel.text! = recycleCodesInfo["paper"]!
-                case _ where code == "CARDBOARD":
-                    recycleInstructionsLabel.text! = recycleCodesInfo["cardbord"]!
-                case _ where code == "ALUMINUM", "TIN OR STEEL", "PAINT OR AEROESOL CANS":
-                    recycleInstructionsLabel.text! = recycleCodesInfo["metal"]!
-                default:
-                    print("crap")
-                }
+                recycleInstructionsLabel.text! = instructionForCode(code)
             }
-            
         }
         
         if let name = scannedProduct.valueForKey("name") as? String {
             productNameLabel.text = name
+            productNameDetail.hidden = true
         }
         else {
-            productNameLabel.text = "Product name not available!"
+            productNameLabel.text = "No product name available for this product."
+            productNameDetail.text = "Check the recycling instructions below."
         }
         
-        let numberOfScans = scannedProduct.valueForKey("numberOfScans") as? Int
-        numberOfScansLabel.text = "This product has been recycled \(numberOfScans!) times."
-        materialLabel.text = scannedProduct.valueForKey("material") as? String
+        if let mat = scannedProduct.valueForKey("material") as? String {
+            materialLabel.text = mat
+            materialDetailLabel.text = "- \(materialForCode(mat))"
+        }
+        
         
         
         if scannedProduct.valueForKey("image") != nil {
@@ -70,9 +58,6 @@ class ProductInfoViewController: UIViewController {
         else {
             productImageView.image = UIImage(named: "NoImage")
         }
-        
-//        updateProduct()
-        
     }
     
     override func viewDidLoad() {
@@ -84,30 +69,6 @@ class ProductInfoViewController: UIViewController {
         navigationController?.popToRootViewControllerAnimated(true)
     }
     
-    func updateProduct() {
-        let publicData = CKContainer.defaultContainer().publicCloudDatabase
-        
-        var timesScaned = scannedProduct.valueForKey("numberOfScans") as! Int
-        
-        scannedProduct.setValue(++timesScaned, forKey: "numberOfScans")
-        
-        publicData.saveRecord(scannedProduct) { (record, error) -> Void in
-            if error != nil {
-                print(error)
-            }
-            else {
-                print("Record updated!")
-                if let product = record, let numberOfScans = product.valueForKey("numberOfScans") {
-                    self.numberOfScansLabel.text = "This product has been recycled \(numberOfScans) times."
-                }
-                
-            }
-        }
-    }
-    
-    
-    
-        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resour  ces that can be recreated.

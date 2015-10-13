@@ -135,20 +135,6 @@
                                     <constraint firstAttribute="height" constant="160" id="p9q-gl-u2p"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This item has been recycled x times." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCX-AD-UPY">
-                                <rect key="frame" x="20" y="223" width="280" height="19"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="material" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvF-ei-r5Y">
-                                <rect key="frame" x="20" y="289" width="280" height="19"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmB-yO-adh">
                                 <rect key="frame" x="20" y="176" width="280" height="19"/>
                                 <animations/>
@@ -156,24 +142,31 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recycle Info:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pd3-X1-wd3">
-                                <rect key="frame" x="20" y="328" width="98.5" height="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="recycle instructions" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oz8-mk-n5h">
+                                <rect key="frame" x="20" y="294" width="280" height="19"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Material:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acP-4r-vMN">
-                                <rect key="frame" x="20" y="262" width="65.5" height="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="material" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvF-ei-r5Y">
+                                <rect key="frame" x="20" y="255" width="65.5" height="19"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="material" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oz8-mk-n5h">
-                                <rect key="frame" x="20" y="355" width="280" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTj-6F-q2m">
+                                <rect key="frame" x="93" y="254.5" width="42" height="20.5"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Te2-91-V13">
+                                <rect key="frame" x="20" y="203" width="280" height="17"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Arial-ItalicMT" family="Arial" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -181,24 +174,21 @@
                         <animations/>
                         <color key="backgroundColor" red="0.95294117649999999" green="0.96862745100000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="sCX-AD-UPY" firstAttribute="leading" secondItem="qdN-4o-ZlJ" secondAttribute="leading" constant="20" id="0ez-vD-JIV"/>
                             <constraint firstItem="nvF-ei-r5Y" firstAttribute="leading" secondItem="qdN-4o-ZlJ" secondAttribute="leading" constant="20" id="1XD-wc-sLQ"/>
                             <constraint firstItem="DmB-yO-adh" firstAttribute="top" secondItem="kxo-Gm-GIH" secondAttribute="bottom" constant="8" id="3OK-d7-Ixy"/>
-                            <constraint firstAttribute="trailing" secondItem="nvF-ei-r5Y" secondAttribute="trailing" constant="20" id="95n-Uq-jtC"/>
-                            <constraint firstItem="sCX-AD-UPY" firstAttribute="top" secondItem="DmB-yO-adh" secondAttribute="bottom" constant="28" id="Bki-7O-a4V"/>
-                            <constraint firstAttribute="trailing" secondItem="sCX-AD-UPY" secondAttribute="trailing" constant="20" id="TQY-kw-qKw"/>
+                            <constraint firstItem="Te2-91-V13" firstAttribute="top" secondItem="DmB-yO-adh" secondAttribute="bottom" constant="8" id="4sL-8O-tTK"/>
                             <constraint firstItem="Oz8-mk-n5h" firstAttribute="leading" secondItem="qdN-4o-ZlJ" secondAttribute="leading" constant="20" id="UGz-eN-rox"/>
                             <constraint firstAttribute="trailing" secondItem="Oz8-mk-n5h" secondAttribute="trailing" constant="20" id="UYi-gG-cTw"/>
-                            <constraint firstItem="nvF-ei-r5Y" firstAttribute="top" secondItem="acP-4r-vMN" secondAttribute="bottom" constant="8" id="Xd3-Du-C3H"/>
-                            <constraint firstItem="acP-4r-vMN" firstAttribute="leading" secondItem="qdN-4o-ZlJ" secondAttribute="leading" constant="20" id="Zbo-m7-JRZ"/>
+                            <constraint firstItem="Oz8-mk-n5h" firstAttribute="top" secondItem="nvF-ei-r5Y" secondAttribute="bottom" constant="20" id="WJB-yK-om8"/>
                             <constraint firstItem="kxo-Gm-GIH" firstAttribute="centerX" secondItem="qdN-4o-ZlJ" secondAttribute="centerX" id="a2n-5e-sff"/>
-                            <constraint firstItem="Oz8-mk-n5h" firstAttribute="top" secondItem="Pd3-X1-wd3" secondAttribute="bottom" constant="8" id="cgU-F2-EeW"/>
+                            <constraint firstItem="nvF-ei-r5Y" firstAttribute="top" secondItem="Te2-91-V13" secondAttribute="bottom" constant="35" id="dAC-FL-oOm"/>
                             <constraint firstItem="DmB-yO-adh" firstAttribute="leading" secondItem="qdN-4o-ZlJ" secondAttribute="leading" constant="20" id="dGd-ZM-53h"/>
                             <constraint firstAttribute="trailing" secondItem="DmB-yO-adh" secondAttribute="trailing" constant="20" id="dox-B1-VyO"/>
-                            <constraint firstItem="Pd3-X1-wd3" firstAttribute="leading" secondItem="qdN-4o-ZlJ" secondAttribute="leading" constant="20" id="kPl-IV-1h1"/>
-                            <constraint firstItem="acP-4r-vMN" firstAttribute="top" secondItem="sCX-AD-UPY" secondAttribute="bottom" constant="20" id="syh-S1-BUe"/>
-                            <constraint firstItem="Pd3-X1-wd3" firstAttribute="top" secondItem="nvF-ei-r5Y" secondAttribute="bottom" constant="20" id="w2x-po-vVw"/>
+                            <constraint firstItem="Te2-91-V13" firstAttribute="trailing" secondItem="DmB-yO-adh" secondAttribute="trailing" id="tcA-82-qEd"/>
+                            <constraint firstItem="eTj-6F-q2m" firstAttribute="leading" secondItem="nvF-ei-r5Y" secondAttribute="trailing" constant="7.5" id="xsx-DW-bXs"/>
                             <constraint firstItem="kxo-Gm-GIH" firstAttribute="top" secondItem="p9b-Gl-jit" secondAttribute="bottom" constant="8" id="yRk-QC-bK4"/>
+                            <constraint firstItem="Te2-91-V13" firstAttribute="leading" secondItem="DmB-yO-adh" secondAttribute="leading" id="ysF-f8-Ube"/>
+                            <constraint firstItem="eTj-6F-q2m" firstAttribute="centerY" secondItem="nvF-ei-r5Y" secondAttribute="centerY" id="zOe-zI-r5H"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Product Info" id="OdX-XZ-sr6">
@@ -209,9 +199,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="materialDetailLabel" destination="eTj-6F-q2m" id="uzH-LG-UJY"/>
                         <outlet property="materialLabel" destination="nvF-ei-r5Y" id="Sna-p4-gVK"/>
-                        <outlet property="numberOfScansLabel" destination="sCX-AD-UPY" id="Abr-ay-Uyg"/>
                         <outlet property="productImageView" destination="kxo-Gm-GIH" id="XiX-dX-myj"/>
+                        <outlet property="productNameDetail" destination="Te2-91-V13" id="VVy-Il-vCn"/>
                         <outlet property="productNameLabel" destination="DmB-yO-adh" id="QMW-Gh-ec0"/>
                         <outlet property="recycleInstructionsLabel" destination="Oz8-mk-n5h" id="owF-DH-Ijn"/>
                     </connections>

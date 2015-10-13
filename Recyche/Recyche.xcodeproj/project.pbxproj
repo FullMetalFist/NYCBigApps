@@ -121,13 +121,13 @@
 				FA1BAEC91BAF15B200D24788 /* View Controllers */,
 				FABC01031BC6EC1400B3048A /* Private Database - CoreData */,
 				FABD2D811BCB37AA003C5464 /* ProductTableViewCell.swift */,
+				FABC01011BC6DE0800B3048A /* RecycleInformation.swift */,
 				7CCEA0101BADB48A00F6D423 /* AppDelegate.swift */,
 				7CCEA0141BADB48A00F6D423 /* Main.storyboard */,
 				7CCEA01A1BADB48A00F6D423 /* Assets.xcassets */,
 				7CCEA01C1BADB48A00F6D423 /* LaunchScreen.storyboard */,
 				FABC00FF1BC6D7C500B3048A /* rcyinfo.txt */,
 				7CCEA01F1BADB48A00F6D423 /* Info.plist */,
-				FABC01011BC6DE0800B3048A /* RecycleInformation.swift */,
 				FA4184BA1BBED5EE00F70AA2 /* Recyche.entitlements */,
 			);
 			path = Recyche;

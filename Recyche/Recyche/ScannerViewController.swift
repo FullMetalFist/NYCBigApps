@@ -14,19 +14,16 @@ import CloudKit
 
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
-    @IBOutlet weak var videoView:UIView!
-    
     var captureSession:AVCaptureSession?
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var qrCodeFrameView:UIView?
     var captureDevice: AVCaptureDevice?
-    
     var lastCapturedCode:String?
     var scannedProduct: CKRecord!
-    
-    
     var barcodeScanned:((String) ->())?
+    var appStart = false
     
+    @IBOutlet weak var videoView:UIView!
     @IBOutlet weak var instructionBanner: UILabel!
     
     private var allowedTypes = [AVMetadataObjectTypeUPCECode,
@@ -39,35 +36,16 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         AVMetadataObjectTypePDF417Code,
         AVMetadataObjectTypeAztecCode]
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if captureSession != nil {
-            restartScanner()
-        }
-    }
+    // MARK: - UIViewController functions
     
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if (FBSDKAccessToken.currentAccessToken() == nil)
-        {
-            performSegueWithIdentifier("toLoginSegue", sender: self)
-        }
-        else
-        {
-            // Need some error notification
-        }
-
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("load")
         
         
-        let addProductViewController = AddProductViewController()
-        tabBarController?.tabBar.tintColor = addProductViewController.colorWithHexString("15783D")
+        
+        tabBarController?.tabBar.tintColor = colorWithHexString("15783D")
         // Do any additional setup after loading the view.
         self.captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         
@@ -112,6 +90,29 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("will")
+        if captureSession != nil {
+            print("ses")
+            restartScanner()
+        }
+    }
+    
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        print("did")
+        if (FBSDKAccessToken.currentAccessToken() == nil) {
+            performSegueWithIdentifier("toLoginSegue", sender: self)
+        }
+        else {
+            // Need some error notification
+        }
+
+    }
+
     
     override func viewWillLayoutSubviews() {
         
@@ -139,16 +140,19 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         }
     }
     
+    // MARK: - Actions
+    
     @IBAction func toProductDetail(sender: AnyObject) {
         lastCapturedCode = "0123456789012"
         databaseCheck(lastCapturedCode!)
     }
     
     @IBAction func toAddProduct(sender: AnyObject) {
-//        lastCapturedCode = "\(arc4random_uniform(692304723))"
-        lastCapturedCode = "0049000011340"
+        lastCapturedCode = "\(arc4random_uniform(892357235))"
         databaseCheck(lastCapturedCode!)
     }
+    
+    // MARK: - Class Functions
     
     func databaseCheck(upc: String) {
         
@@ -191,6 +195,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         videoPreviewLayer?.frame = videoView.layer.bounds
     }
+    
+    // MARK: - AVCaptureOutput Delegate
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
         if metadataObjects == nil || metadataObjects.count == 0
