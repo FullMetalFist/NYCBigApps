@@ -89,7 +89,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         super.viewWillAppear(animated)
         
         if captureSession != nil {
-            print("ses")
             restartScanner()
         }
     }
@@ -210,7 +209,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             if metadataObj.stringValue != nil {
                 captureSession?.stopRunning()
                 
-                print(metadataObj.stringValue)
                 lastCapturedCode = metadataObj.stringValue
                 databaseCheck(metadataObj.stringValue)
                 

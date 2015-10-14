@@ -70,14 +70,12 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         
         publicData.saveRecord(product) { (record, error) -> Void in
             if error != nil {
-                print(error)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.loadingActivityIndicator.stopAnimating()
                     self.loadingView.hidden = true
                 })
             }
             else {
-                print(record?.recordID.recordName)
                 self.newProduct = record
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.loadingActivityIndicator.stopAnimating()
@@ -94,14 +92,11 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
             
             if let data = response.data {
                 let json = JSON(data: data)
-                print(json)
                 if let _name = json["0"]["productname"].string {
-                    print(_name)
                     if _name == " " {
                         self.productNameLabel.text = self.naMessage
                     }
                     else {
-                        print(_name)
                         self.productNameLabel.text = _name
                         self.name = _name
                     }

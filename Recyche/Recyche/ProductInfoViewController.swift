@@ -29,7 +29,6 @@ class ProductInfoViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        print("loading")
         for code in recycleCodes {
             if code == scannedProduct.valueForKey("material") as! String {
                 recycleInstructionsLabel.text! = instructionForCode(code)
