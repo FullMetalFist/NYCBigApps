@@ -407,6 +407,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C5515FE0A6026B30DA139C9 /* Pods-Recyche.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Recyche/Recyche.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -429,6 +430,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 34AFD1111DBC5CD6A402D18E /* Pods-Recyche.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Recyche/Recyche.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
