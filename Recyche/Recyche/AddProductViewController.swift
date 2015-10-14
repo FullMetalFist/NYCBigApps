@@ -66,7 +66,6 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
             product.setValue(asset, forKey: "image")
         }
         
-        
         publicData.saveRecord(product) { (record, error) -> Void in
             if error != nil {
                 print(error)
@@ -92,7 +91,7 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
     func addToPersonalDatabase() {
         let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
         
-        Product.createInManagedObjectContext(managedObjectContext, _name: productNameLabel.text!, _material: material, _date: NSDate())
+        Product.createInManagedObjectContext(managedObjectContext, _name: name != nil ? name! : "Unknown" , _material: material, _date: NSDate())
         
         do {
             try managedObjectContext.save()
@@ -118,7 +117,6 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
                         self.productNameLabel.text = _name
                         self.name = _name
                     }
-                    
                 }
                 else {
                     self.productNameLabel.text = self.naMessage
@@ -132,36 +130,14 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
                 }
                 self.loadingActivityIndicator.stopAnimating()
                 self.loadingView.hidden = true
-//                if let _name = json["0"]["productname"].string, let imageURL = json["0"]["imageurl"].string {
-//                    if _name == " " {
-//                        self.productNameLabel.text = "No product found!\nPlease choose the appropriate recycling code and save it in our database for future reference."
-//                        self.productImageView.image = UIImage(named: "NoImage")
-//                    }
-//                    else {
-//                        self.productNameLabel.text = _name
-//                        self.name = _name
-//                    }
-//                    
-//                    
-//                    if self.verifyUrl(imageURL) {
-//                        self.productImageView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: imageURL)!)!)
-//                    }
-//                }
-//                else {
-//                    self.productNameLabel.text = "No product found!\nPlease choose the appropriate recycling code and save it in our database for future reference."
-//                    self.productImageView.image = UIImage(named: "NoImage")
-//                }
             }
-            
         }
-
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resour  ces that can be recreated.
     }
-    
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -182,7 +158,6 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         pickerLabel.attributedText = myTitle
         pickerLabel.textAlignment = .Center
         pickerLabel.backgroundColor = colorForCode(titleData)
-        
         
         return pickerLabel
     }
