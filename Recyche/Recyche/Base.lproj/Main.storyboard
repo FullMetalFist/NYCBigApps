@@ -127,7 +127,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Rq7-0a-yxq">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rq7-0a-yxq">
                                 <rect key="frame" x="16" y="8" width="288" height="439"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kxo-Gm-GIH">
@@ -139,55 +139,50 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Product Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DmB-yO-adh">
-                                        <rect key="frame" x="95" y="168" width="100" height="21"/>
+                                        <rect key="frame" x="98" y="170" width="92" height="19.5"/>
                                         <animations/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Te2-91-V13">
-                                        <rect key="frame" x="128" y="197" width="33" height="18"/>
+                                        <rect key="frame" x="128" y="199.5" width="32.5" height="18"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="254" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0Ir-hQ-L5P">
-                                        <rect key="frame" x="93" y="223" width="103" height="21"/>
+                                        <rect key="frame" x="97" y="227.5" width="94" height="19.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="255" text="material" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvF-ei-r5Y">
-                                                <rect key="frame" x="0.0" y="0.0" width="57" height="21"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="52" height="19.5"/>
                                                 <animations/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="257" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTj-6F-q2m">
-                                                <rect key="frame" x="65" y="0.0" width="38" height="21"/>
+                                                <rect key="frame" x="60" y="0.0" width="34" height="19.5"/>
                                                 <animations/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="14"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <animations/>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZRs-a6-MCN">
-                                        <rect key="frame" x="0.0" y="251" width="288" height="188"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZRs-a6-MCN">
+                                        <rect key="frame" x="0.0" y="257" width="288" height="182"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="recycle instructions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oz8-mk-n5h">
-                                                <rect key="frame" x="0.0" y="0.0" width="288" height="21"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="JSe-WK-YSc">
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="182"/>
                                                 <animations/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
                                         <animations/>
-                                        <constraints>
-                                            <constraint firstItem="Oz8-mk-n5h" firstAttribute="leading" secondItem="ZRs-a6-MCN" secondAttribute="leadingMargin" id="JJx-EI-0xV"/>
-                                            <constraint firstItem="Oz8-mk-n5h" firstAttribute="trailing" secondItem="ZRs-a6-MCN" secondAttribute="trailingMargin" id="Y9x-7W-HVF"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <animations/>
@@ -219,7 +214,7 @@
                         <outlet property="productImageView" destination="kxo-Gm-GIH" id="XiX-dX-myj"/>
                         <outlet property="productNameDetail" destination="Te2-91-V13" id="VVy-Il-vCn"/>
                         <outlet property="productNameLabel" destination="DmB-yO-adh" id="QMW-Gh-ec0"/>
-                        <outlet property="recycleInstructionsLabel" destination="Oz8-mk-n5h" id="owF-DH-Ijn"/>
+                        <outlet property="recycleInstructionsTextView" destination="JSe-WK-YSc" id="Wtw-ZL-A3v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DFT-aG-ReP" userLabel="First Responder" sceneMemberID="firstResponder"/>

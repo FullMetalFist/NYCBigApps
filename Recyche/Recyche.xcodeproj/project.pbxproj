@@ -191,7 +191,7 @@
 				TargetAttributes = {
 					7CCEA00C1BADB48A00F6D423 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 96HG6E2WJ6;
+						DevelopmentTeam = 36C7Q24PMU;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -419,7 +419,7 @@
 				INFOPLIST_FILE = Recyche/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.recyche.Recyche;
+				PRODUCT_BUNDLE_IDENTIFIER = com.recyche;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -441,7 +441,7 @@
 				INFOPLIST_FILE = Recyche/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.recyche.Recyche;
+				PRODUCT_BUNDLE_IDENTIFIER = com.recyche;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

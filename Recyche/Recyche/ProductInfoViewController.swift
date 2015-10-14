@@ -26,12 +26,13 @@ class ProductInfoViewController: UIViewController {
     @IBOutlet weak var materialLabel: UILabel!
     @IBOutlet weak var materialDetailLabel: UILabel!
     @IBOutlet weak var recycleInstructionsLabel: UILabel!
+    @IBOutlet weak var recycleInstructionsTextView: UITextView!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         for code in recycleCodes {
             if code == scannedProduct.valueForKey("material") as! String {
-                recycleInstructionsLabel.text! = instructionForCode(code)
+                recycleInstructionsTextView.text! = instructionForCode(code)
             }
         }
         
@@ -45,8 +46,8 @@ class ProductInfoViewController: UIViewController {
         }
         
         if let mat = scannedProduct.valueForKey("material") as? String {
-            materialLabel.text = mat
-            materialDetailLabel.text = "- \(materialForCode(mat))"
+            materialLabel.text = materialForCode(mat)
+            materialDetailLabel.text = mat
         }
         
         if scannedProduct.valueForKey("image") != nil {
