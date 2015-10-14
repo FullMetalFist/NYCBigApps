@@ -50,7 +50,6 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         
         let product = CKRecord(recordType: "Product", recordID: CKRecordID(recordName: scannedUPC))
         product.setValue(material, forKey: "material")
-        product.setValue(1, forKey: "numberOfScans")
         if let nm = name {
            product.setValue(nm, forKey: "name")
         }
@@ -70,7 +69,6 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         
         publicData.saveRecord(product) { (record, error) -> Void in
             if error != nil {
-                print(error)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.loadingActivityIndicator.stopAnimating()
                     self.loadingView.hidden = true
@@ -101,7 +99,6 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
                         self.productNameLabel.text = self.naMessage
                     }
                     else {
-                        print(_name)
                         self.productNameLabel.text = _name
                         self.name = _name
                     }

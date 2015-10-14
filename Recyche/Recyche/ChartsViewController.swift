@@ -77,12 +77,12 @@ class ChartsViewController: UIViewController {
         
         for product in products { // Iterate over products in local database
             if calendar.component(unit, fromDate: product.dateadded!) == today { // Check for items matching this week/month/year
-                print("fits week/month/year")
+//                print("fits week/month/year")
                 var chartItem = (code: materialForCode(product.material!), amount: 1) // New chartItem because the item is in this week/month/year
                 if chartData.contains( { $0.code == chartItem.code } ) { // Check if there are alredy existing products with same material
-                    print("There's existing product with same code")
+//                    print("There's existing product with same code")
                     if let index = chartData.indexOf( { $0.code == chartItem.code } ) { // Check for index of the identical item
-                        print("Found index, delete old item and put in a new one with incremented amount")
+//                        print("Found index, delete old item and put in a new one with incremented amount")
                         chartItem.amount += chartData[index].amount // Update value of the new item
                         chartData.removeAtIndex(index) // Remove the old item
                         chartData.append(chartItem) // Append new item with updated value
@@ -94,10 +94,9 @@ class ChartsViewController: UIViewController {
                 }
             }
             else {
-                print("No items for this week/month/year")
+                print("No item for this week/month/year")
             }
             
-            print(chartData)
             var dataPoints: [String] = []
             var values: [Double] = []
             
