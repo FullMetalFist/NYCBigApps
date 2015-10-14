@@ -33,7 +33,6 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         
         addProductToDatabaseButton.enabled = false
         addProductToDatabaseButton.alpha = 0.3
-//        loadingView.hidden = true
         loadingActivityIndicator.startAnimating()
     }
     

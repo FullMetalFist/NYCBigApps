@@ -138,8 +138,8 @@
 			children = (
 				FAE29D841BBB6412003325DA /* LoginViewController.swift */,
 				FA1BAECA1BAF15C600D24788 /* ScannerViewController.swift */,
-				FA1BAECC1BAF15FB00D24788 /* ProductInfoViewController.swift */,
 				FA1BAECE1BAF160600D24788 /* AddProductViewController.swift */,
+				FA1BAECC1BAF15FB00D24788 /* ProductInfoViewController.swift */,
 				FA1BAED21BAF163400D24788 /* ChartsViewController.swift */,
 				FA1BAED41BAF164B00D24788 /* ListOfProductsViewController.swift */,
 			);
