@@ -44,6 +44,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         super.viewDidLoad()
         
         tabBarController?.tabBar.tintColor = colorWithHexString("15783D")
+        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "AvenirNext-Medium", size: 17)!]
+//        print(UIFont.fontNamesForFamilyName("Avenir Next"))
         
         loadingView.hidden = true
 

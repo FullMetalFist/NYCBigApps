@@ -26,10 +26,7 @@ class ChartsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
-//        let unitsSold: [Double] = [20, 4, 6, 3, 12, 16]
-//        
-//        setChart(months, values: unitsSold)
+        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "AvenirNext-Medium", size: 17)!]
     }
     
     @IBAction func segmentControlChanged(sender: UISegmentedControl) {

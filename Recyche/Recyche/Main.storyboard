@@ -232,9 +232,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Product Info" id="OdX-XZ-sr6">
-                        <barButtonItem key="leftBarButtonItem" title="Scanner" id="iIy-Ly-DfP">
+                        <barButtonItem key="leftBarButtonItem" image="scannericon" id="BTA-0R-wjM">
                             <connections>
-                                <action selector="toScanner:" destination="1PX-ug-F7f" id="GGv-Wi-Xp4"/>
+                                <action selector="toScanner:" destination="1PX-ug-F7f" id="XIM-ZJ-qee"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -617,6 +617,6 @@
         <image name="scannericon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="m8x-lW-tSk"/>
+        <segue reference="4ul-7p-4qU"/>
     </inferredMetricsTieBreakers>
 </document>

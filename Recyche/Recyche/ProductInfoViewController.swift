@@ -25,7 +25,6 @@ class ProductInfoViewController: UIViewController {
     @IBOutlet weak var productNameDetail: UILabel!
     @IBOutlet weak var materialLabel: UILabel!
     @IBOutlet weak var materialDetailLabel: UILabel!
-    @IBOutlet weak var recycleInstructionsLabel: UILabel!
     @IBOutlet weak var recycleInstructionsTextView: UITextView!
     
     override func viewWillAppear(animated: Bool) {
