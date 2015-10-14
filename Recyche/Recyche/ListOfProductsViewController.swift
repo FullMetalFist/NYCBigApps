@@ -37,8 +37,6 @@ class ListOfProductsViewController: UIViewController, UITableViewDataSource, UIT
         let product = products[indexPath.row]
         
         cell.nameLabel.text = product.name
-        cell.materialLabel.text = materialForCode(product.material!)
-        cell.materialCodeLabel.text = product.material
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.setLocalizedDateFormatFromTemplate("d MMM y")

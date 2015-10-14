@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import CloudKit
+import CoreData
 
 let URLString = "http://www.searchupc.com/handlers/upcsearch.ashx?request_type=3"
 let access_token = "C6D5DA80-A126-4235-A35A-26E73FC64C2F"
@@ -28,7 +29,7 @@ class ProductInfoViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        print("loading")
         for code in recycleCodes {
             if code == scannedProduct.valueForKey("material") as! String {
                 recycleInstructionsLabel.text! = instructionForCode(code)
@@ -49,8 +50,6 @@ class ProductInfoViewController: UIViewController {
             materialDetailLabel.text = "- \(materialForCode(mat))"
         }
         
-        
-        
         if scannedProduct.valueForKey("image") != nil {
             let imageAsset = scannedProduct.valueForKey("image") as! CKAsset
             productImageView.image = UIImage(contentsOfFile: imageAsset.fileURL.path!)
@@ -63,6 +62,7 @@ class ProductInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addToPersonalDatabase(scannedProduct)
     }
     
     @IBAction func toScanner(sender: AnyObject) {
@@ -73,5 +73,19 @@ class ProductInfoViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resour  ces that can be recreated.
     }
+    
+    func addToPersonalDatabase(product: CKRecord!) {
+        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        
+        Product.createInManagedObjectContext(managedObjectContext, _name: product.valueForKey("name") as! String, _material: product.valueForKey("material") as! String, _date: NSDate())
+        
+        do {
+            try managedObjectContext.save()
+        }
+        catch _ {
+            print("Error?")
+        }
+    }
+
 }
 

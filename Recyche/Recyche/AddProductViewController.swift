@@ -10,7 +10,6 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import CloudKit
-import CoreData
 
 class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
@@ -55,6 +54,9 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         if let nm = name {
            product.setValue(nm, forKey: "name")
         }
+        else {
+            product.setValue("Unknown", forKey: "name")
+        }
         
         if let _ = imageURL {
             let imageData = UIImageJPEGRepresentation(productImageView.image!, 1)
@@ -76,7 +78,6 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
             }
             else {
                 print(record?.recordID.recordName)
-                self.addToPersonalDatabase()
                 self.newProduct = record
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.loadingActivityIndicator.stopAnimating()
@@ -88,26 +89,13 @@ class AddProductViewController: UIViewController, UIPickerViewDelegate, UIImageP
         }
     }
     
-    func addToPersonalDatabase() {
-        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-        
-        Product.createInManagedObjectContext(managedObjectContext, _name: name != nil ? name! : "Unknown" , _material: material, _date: NSDate())
-        
-        do {
-            try managedObjectContext.save()
-        }
-        catch _ {
-            print("Error?")
-        }
-    }
-    
     func checkUPCCodesApiForMatchingCode() {
         Alamofire.request(.GET, URLString, parameters: ["access_token" : access_token ,"upc": scannedUPC]).responseJSON { response in
             
             if let data = response.data {
                 let json = JSON(data: data)
                 print(json)
-                if let _name = json["0"]["productname"].string/*, */ {
+                if let _name = json["0"]["productname"].string {
                     print(_name)
                     if _name == " " {
                         self.productNameLabel.text = self.naMessage
