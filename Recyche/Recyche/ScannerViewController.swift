@@ -44,6 +44,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         super.viewDidLoad()
         
         tabBarController?.tabBar.tintColor = colorWithHexString("15783D")
+        
+        loadingView.hidden = true
 
         self.captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         
