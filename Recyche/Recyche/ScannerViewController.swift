@@ -24,6 +24,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     @IBOutlet weak var videoView:UIView!
     @IBOutlet weak var instructionBanner: UILabel!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     private var allowedTypes = [AVMetadataObjectTypeUPCECode,
         AVMetadataObjectTypeCode39Code,
@@ -42,6 +44,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         super.viewDidLoad()
         
         tabBarController?.tabBar.tintColor = colorWithHexString("15783D")
+        loadingView.hidden = true
 
         self.captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         
@@ -156,6 +159,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                 if error!.userInfo["ServerErrorDescription"]! as! String == "Record not found" {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.performSegueWithIdentifier("toAddProductSegue", sender: self)
+                        self.loadingIndicator.stopAnimating()
+                        self.loadingView.hidden = true
                     })
                 }
                 else {
@@ -168,6 +173,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                     self.scannedProduct = rec
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.performSegueWithIdentifier("toProductInfoSegue", sender: self)
+                        self.loadingIndicator.stopAnimating()
+                        self.loadingView.hidden = true
                     })
                 }
             }
@@ -207,6 +214,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             qrCodeFrameView?.frame = barCodeObject.bounds;
             
             if metadataObj.stringValue != nil {
+                loadingView.hidden = false
+                loadingIndicator.startAnimating()
+                
                 captureSession?.stopRunning()
                 
                 lastCapturedCode = metadataObj.stringValue
