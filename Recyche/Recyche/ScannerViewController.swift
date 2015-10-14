@@ -26,6 +26,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     @IBOutlet weak var instructionBanner: UILabel!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var torchButton: UIButton!
     
     private var allowedTypes = [AVMetadataObjectTypeUPCECode,
         AVMetadataObjectTypeCode39Code,
@@ -45,7 +46,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         
         tabBarController?.tabBar.tintColor = colorWithHexString("15783D")
         navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "AvenirNext-Medium", size: 17)!]
-//        print(UIFont.fontNamesForFamilyName("Avenir Next"))
+        
+        torchButton.layer.shadowOpacity = 1.0
+        torchButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+        torchButton.layer.shadowRadius = 20.0
+        torchButton.layer.shadowColor = UIColor.whiteColor().CGColor
         
         loadingView.hidden = true
 
@@ -150,6 +155,29 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         databaseCheck(lastCapturedCode!)
     }
     
+    @IBAction func torch(sender: AnyObject) {
+        if let device = captureDevice {
+            if device.hasTorch && device.isTorchModeSupported(.Auto) {
+                do {
+                    try device.lockForConfiguration()
+                    if device.torchMode == .On {
+                        torchButton.setImage(UIImage(named: "Greentech Filled"), forState: .Normal)
+                        device.torchMode = .Off
+                    }
+                    else {
+                        device.torchMode = .On
+                        torchButton.setImage(UIImage(named: "Greentech"), forState: .Normal)
+                    }
+                    device.unlockForConfiguration()
+                }
+                catch  {
+                    
+                }
+                
+            }
+        }
+
+    }
     // MARK: - Class Functions
     
     func databaseCheck(upc: String) {

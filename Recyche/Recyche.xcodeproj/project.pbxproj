@@ -20,10 +20,10 @@
 		FA1BAED31BAF163400D24788 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED21BAF163400D24788 /* ChartsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA1BAED51BAF164B00D24788 /* ListOfProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1BAED41BAF164B00D24788 /* ListOfProductsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		FABB39701BCEE28400AE8462 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABB396F1BCEE28400AE8462 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
+		FABB39721BCEF38F00AE8462 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FABB39711BCEF38F00AE8462 /* CloudKit.framework */; };
 		FABC01001BC6D7C500B3048A /* rcyinfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = FABC00FF1BC6D7C500B3048A /* rcyinfo.txt */; settings = {ASSET_TAGS = (); }; };
 		FABC01021BC6DE0800B3048A /* RecycleInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABC01011BC6DE0800B3048A /* RecycleInformation.swift */; settings = {ASSET_TAGS = (); }; };
 		FABD2D821BCB37AB003C5464 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABD2D811BCB37AA003C5464 /* ProductTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		FABD2DA21BCC10E8003C5464 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FABD2DA11BCC10E8003C5464 /* CloudKit.framework */; };
 		FAE29D851BBB6412003325DA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE29D841BBB6412003325DA /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -59,10 +59,10 @@
 		FA1BAED41BAF164B00D24788 /* ListOfProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfProductsViewController.swift; sourceTree = "<group>"; };
 		FA4184BA1BBED5EE00F70AA2 /* Recyche.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Recyche.entitlements; sourceTree = "<group>"; };
 		FABB396F1BCEE28400AE8462 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		FABB39711BCEF38F00AE8462 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		FABC00FF1BC6D7C500B3048A /* rcyinfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rcyinfo.txt; sourceTree = "<group>"; };
 		FABC01011BC6DE0800B3048A /* RecycleInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecycleInformation.swift; sourceTree = "<group>"; };
 		FABD2D811BCB37AA003C5464 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
-		FABD2DA11BCC10E8003C5464 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		FAE29D841BBB6412003325DA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,7 +72,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D32DACF01BE5F3F4AC707997 /* Pods_Recyche.framework in Frameworks */,
-				FABD2DA21BCC10E8003C5464 /* CloudKit.framework in Frameworks */,
+				FABB39721BCEF38F00AE8462 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +91,7 @@
 		0B8B1D01E3FB503623910908 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FABD2DA11BCC10E8003C5464 /* CloudKit.framework */,
+				FABB39711BCEF38F00AE8462 /* CloudKit.framework */,
 				D98569438C1359D2C195A1AD /* Pods_Recyche.framework */,
 			);
 			name = Frameworks;
