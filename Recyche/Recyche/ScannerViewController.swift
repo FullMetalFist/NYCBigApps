@@ -21,7 +21,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var lastCapturedCode:String?
     var scannedProduct: CKRecord!
     var barcodeScanned:((String) ->())?
-    var appStart = false
     
     @IBOutlet weak var videoView:UIView!
     @IBOutlet weak var instructionBanner: UILabel!
@@ -41,12 +40,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("load")
-        
-        
         
         tabBarController?.tabBar.tintColor = colorWithHexString("15783D")
-        // Do any additional setup after loading the view.
+
         self.captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         
         var error:NSError?
@@ -54,12 +50,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         do {
             input = try AVCaptureDeviceInput(device: captureDevice)
         }
-        catch let error1 as NSError{
+        catch let error1 as NSError {
             error = error1
             input = nil
         }
-        if (error != nil)
-        {
+        if (error != nil) {
             print("\(error?.localizedDescription)")
             return
         }
@@ -93,7 +88,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        print("will")
         if captureSession != nil {
             print("ses")
             restartScanner()
@@ -103,14 +97,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        print("did")
+
         if (FBSDKAccessToken.currentAccessToken() == nil) {
             performSegueWithIdentifier("toLoginSegue", sender: self)
         }
         else {
             // Need some error notification
         }
-
     }
 
     

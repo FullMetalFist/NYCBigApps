@@ -37,12 +37,13 @@ class ListOfProductsViewController: UIViewController, UITableViewDataSource, UIT
         let product = products[indexPath.row]
         
         cell.nameLabel.text = product.name
-        cell.materialLabel.text = product.material
         
         let dateFormatter = NSDateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("yyMMMM")
+        dateFormatter.setLocalizedDateFormatFromTemplate("d MMM y")
         
         cell.dateLabel.text = dateFormatter.stringFromDate(product.dateadded!)
+        
+        cell.backgroundColor = colorForCode(product.material!)
         
         return cell
     }

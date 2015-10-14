@@ -12,6 +12,7 @@ class ProductTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var materialLabel: UILabel!
+    @IBOutlet weak var materialCodeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
